@@ -11,12 +11,13 @@ const port = process.env.PORT || 3000
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'archivos/')
+    cb(null, 'public/archivos/')
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
     const extension = path.extname(file.originalname)
     cb(null, uniqueSuffix + extension)
+    // cb(null, 'image' + extension)
   }
 })
 const upload = multer({ storage: storage })
@@ -52,12 +53,11 @@ app.post('/report', upload.any(), (req, res) => {
             await page.emulateMediaType('screen');
             const pdf = await page.pdf({
               path: 'result.pdf',
-              margin: { top: '50px', right: '50px', bottom: '50px', left: '50px' },
+              margin: { top: '15px', right: '15px', bottom: '15px', left: '15px' },
               printBackground: true,
               format: 'A4', 
             });
             await browser.close();
-
           })()
 
 
@@ -65,7 +65,7 @@ app.post('/report', upload.any(), (req, res) => {
       }
   });
 
-  res.redirect('/')
+  res.render('pages/report', {data})
 })
 
 app.listen(port, ["192.168.1.37", "localhost" ], () => {

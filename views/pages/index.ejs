@@ -5,7 +5,6 @@
   </head>
   <body>
     <%- include('../partials/navbar', {isAdmin: data['isAdmin']}) %>
-
     <section class="forms py-4 py-lg-5">
       <div class="container-xl">
         <form
@@ -14,11 +13,10 @@
           method="post"
           class="row g-3"
           enctype="multipart/form-data"
-        >
+          >
           <div class="col-12">
             <h3>DATOS DEL CLIENTE</h3>
           </div>
-
           <div class="col-md-6 col-lg-4">
             <label for="nombre" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="nombre" name="nombre" />
@@ -30,7 +28,7 @@
               class="form-control"
               id="poblacion"
               name="poblacion"
-            />
+              />
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="telefono" class="form-label">Teléfono</label>
@@ -39,7 +37,7 @@
               class="form-control"
               id="telefono"
               name="telefono"
-            />
+              />
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="pais" class="form-label">País</label>
@@ -49,11 +47,9 @@
             <label for="email" class="form-label">E-mail</label>
             <input type="email" class="form-control" id="email" name="email" />
           </div>
-
           <div class="col-12">
             <h3>DATOS DEL VEHÍCULO</h3>
           </div>
-
           <div class="col-md-6 col-lg-4">
             <label for="matricula" class="form-label">Matrícula</label>
             <input
@@ -61,7 +57,7 @@
               class="form-control"
               id="matricula"
               name="matricula"
-            />
+              />
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="marca" class="form-label">Marca</label>
@@ -78,7 +74,7 @@
               class="form-control"
               id="anio-modelo"
               name="anio-modelo"
-            />
+              />
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="bastidor" class="form-label">Bastidor</label>
@@ -87,7 +83,7 @@
               class="form-control"
               id="bastidor"
               name="bastidor"
-            />
+              />
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="color" class="form-label">Color</label>
@@ -100,7 +96,7 @@
               class="form-control"
               id="mod-tec"
               name="mod-tec"
-            />
+              />
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="c-motor" class="form-label">C. Motor.</label>
@@ -109,7 +105,7 @@
               class="form-control"
               id="c-motor"
               name="c-motor"
-            />
+              />
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="fecha-1-mat" class="form-label">Fecha 1° mat.</label>
@@ -118,1768 +114,2131 @@
               class="form-control"
               id="fecha-1-mat"
               name="fecha-1-mat"
-            />
+              />
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="fecha-fin-garantia" class="form-label"
               >Fecha fin de garantía</label
-            >
+              >
             <input
               type="text"
               class="form-control"
               id="fecha-fin-garantia"
               name="fecha-fin-garantia"
-            />
+              />
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="inspeccion-tecnica" class="form-label"
               >Inspección Técnica</label
-            >
+              >
             <input
               type="text"
               class="form-control"
               id="inspeccion-tecnica"
               name="inspeccion-tecnica"
-            />
+              />
           </div>
-
           <div class="col-12">
             <h3>ACTUACIONES</h3>
           </div>
-
           <div class="col-12">
             <textarea
               class="form-control"
               id="actuaciones"
               name="actuaciones"
               rows="8"
-            ></textarea>
+              ></textarea>
           </div>
+
+          <div class="col-12">
+            <h3>ESTADO DEL VEHÍCULO</h3>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <label for="km" class="form-label"
+              >Km</label
+              >
+            <input
+              type="text"
+              class="form-control"
+              id="km"
+              name="km"
+              />
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <label for="gasolina" class="form-label"
+              >Gasolina</label
+              >
+            <input
+              type="text"
+              class="form-control"
+              value="/8"
+              id="gasolina"
+              name="gasolina"
+              />
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <label for="aceite" class="form-label"
+              >Aceite</label
+              >
+            <input
+              type="text"
+              class="form-control"
+              value="/8"
+              id="aceite"
+              name="aceite"
+              />
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <label for="refrigerante" class="form-label"
+              >Refrigerante</label
+              >
+            <input
+              type="text"
+              class="form-control"
+              value="/8"
+              id="refrigerante"
+              name="refrigerante"
+              />
+          </div>      
+          
+          <div class="col-12">
+            <h3>Neumáticos (gráfico)</h3>
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex flex-column">
+            <label for="neumatico-delantero-derecho-mm" class="form-label"
+              >Neumático Delantero Derecho <span class="text-lowercase">(mm)</span></label
+              >
+            <input
+              type="text"
+              class="form-control mt-auto"
+              id="neumatico-delantero-derecho-mm"
+              name="neumatico-delantero-derecho-mm"
+              />
+            <label for="neumatico-delantero-derecho-color" class="form-label mt-1"
+              >Color</label
+              >
+            <select
+              class="form-control"
+              id="neumatico-delantero-derecho-color"
+              name="neumatico-delantero-derecho-color"
+              >
+              <option value="verde" selected>Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+            </select>
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex flex-column">
+            <label for="neumatico-delantero-izquierdo-mm" class="form-label"
+              >Neumático Delantero izquierdo <span class="text-lowercase">(mm)</span></label
+              >
+            <input
+              type="text"
+              class="form-control mt-auto"
+              id="neumatico-delantero-izquierdo-mm"
+              name="neumatico-delantero-izquierdo-mm"
+              />
+            <label for="neumatico-delantero-izquierdo-color" class="form-label mt-1"
+              >Color</label
+              >
+            <select
+              class="form-control"
+              id="neumatico-delantero-izquierdo-color"
+              name="neumatico-delantero-izquierdo-color"
+              >
+              <option value="verde" selected>Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+            </select>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex flex-column">
+            <label for="neumatico-trasero-derecho-mm" class="form-label"
+              >Neumático trasero Derecho <span class="text-lowercase">(mm)</span></label
+              >
+            <input
+              type="text"
+              class="form-control mt-auto"
+              id="neumatico-trasero-derecho-mm"
+              name="neumatico-trasero-derecho-mm"
+              />
+            <label for="neumatico-trasero-derecho-color" class="form-label mt-1"
+              >Color</label
+              >
+            <select
+              class="form-control"
+              id="neumatico-trasero-derecho-color"
+              name="neumatico-trasero-derecho-color"
+              >
+              <option value="verde" selected>Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+            </select>
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex flex-column">
+            <label for="neumatico-trasero-izquierdo-mm" class="form-label"
+              >Neumático trasero izquierdo <span class="text-lowercase">(mm)</span></label
+              >
+            <input
+              type="text"
+              class="form-control mt-auto"
+              id="neumatico-trasero-izquierdo-mm"
+              name="neumatico-trasero-izquierdo-mm"
+              />
+            <label for="neumatico-trasero-izquierdo-color" class="form-label mt-1"
+              >Color</label
+              >
+            <select
+              class="form-control"
+              id="neumatico-trasero-izquierdo-color"
+              name="neumatico-trasero-izquierdo-color"
+              >
+              <option value="verde" selected>Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+            </select>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <label for="neumatico-dimensiones" class="form-label"
+              >Dimensiones</label
+              >
+            <input
+              type="text"
+              class="form-control mt-auto"
+              id="neumatico-dimensiones"
+              name="neumatico-dimensiones"
+              />
+          </div>
+          
+          <div class="col-12">
+            <h3>Daños (gráfico)</h3>
+            <input type="hidden" name="danios-img" id="danios-img">
+          </div>
+
+          <div class="col-12 pb-5" style="overflow-x: scroll;">
+            <div class="p-4">
+              <canvas id="danios-canvas" width="1000" height="700"></canvas>
+            </div>
+            <div class="mt-3">
+              <button class="btn btn-outline-danger add-shape mb-3 me-3" data-shape="square">Añadir "Elemento Ausente"</button>
+              <button class="btn btn-outline-danger add-shape mb-3 me-3" data-shape="triangle">Añadir "Rayada"</button>
+              <button class="btn btn-outline-danger add-shape mb-3 me-3" data-shape="circle">Añadir "Abolladura"</button>
+            </div>
+          </div>
+
+
+          <div class="col-12">
+            <h3>RECORRIDOS REALIZADOS</h3>
+            <input type="hidden" value="0" name="recorridos[cantidad]" id="cantidad-recorridos" />
+          </div>
+
+          <div class="col-12">
+            <div id="recorridos">
+            </div>
+
+            <button class="btn btn-primary" type="text" id="anadir-recorrido">Añadir Recorrido</button>
+          </div>    
 
           <div class="col-12">
             <h3>RESULTADO PRUEBA DINÁMICA</h3>
           </div>
-
           <div class="col-md-6 col-lg-4">
             <label for="comportamiento-del-cambio" class="form-label"
               >Comportamiento del cambio</label
-            >
+              >
             <select
               class="form-control"
               id="comportamiento-del-cambio"
               name="comportamiento-del-cambio"
-            >
+              >
               <option class="empty-option" selected value></option>
               <option value="Correcto">Correcto</option>
               <option value="Dureza/ruido/rascado">Dureza/ruido/rascado</option>
             </select>
+            <textarea name="comportamiento-del-cambio-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-del-embrague" class="form-label"
               >Estado del embrague</label
-            >
+              >
             <select
               class="form-control"
               id="estado-del-embrague"
               name="estado-del-embrague"
-            >
+              >
               <option class="empty-option" selected value></option>
               <option value="Correcto">Correcto</option>
               <option value="Patina/ruido">Patina/ruido</option>
             </select>
+            <textarea name="estado-del-embrague-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
-
           <div class="col-12">
             <h3>INTERIOR</h3>
           </div>
-
           <div class="col-md-6 col-lg-4">
             <label for="interior" class="form-label">interior</label
-            ><select name="interior" id="interior" class="form-control">
+              >
+            <select name="interior" id="interior" class="form-control">
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
             </select>
+            <textarea name="interior-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="hora-y-fecha" class="form-label">hora y fecha</label
-            ><select name="hora-y-fecha" id="hora-y-fecha" class="form-control">
+              >
+            <select name="hora-y-fecha" id="hora-y-fecha" class="form-control">
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
             </select>
+            <textarea name="hora-y-fecha-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="luces-interior" class="form-label">luces interior</label
-            ><select
+              >
+            <select
               name="luces-interior"
               id="luces-interior"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="luces-interior-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="testigos-averia" class="form-label"
               >testigos avería</label
-            ><select
+              >
+            <select
               name="testigos-averia"
               id="testigos-averia"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="testigos-averia-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="climatizacion" class="form-label">climatización</label
-            ><select
+              >
+            <select
               name="climatizacion"
               id="climatizacion"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="climatizacion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-elevalunas-d-d" class="form-label"
               >estado elevalunas d/d</label
-            ><select
+              >
+            <select
               name="estado-elevalunas-d-d"
               id="estado-elevalunas-d-d"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-elevalunas-d-d-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-elevalunas-d-izq" class="form-label"
               >estado elevalunas d/izq</label
-            ><select
+              >
+            <select
               name="estado-elevalunas-d-izq"
               id="estado-elevalunas-d-izq"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-elevalunas-d-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-elevalunas-t-d" class="form-label"
               >estado elevalunas t/d</label
-            ><select
+              >
+            <select
               name="estado-elevalunas-t-d"
               id="estado-elevalunas-t-d"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-elevalunas-t-d-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-elevalunas-trasero-izquierdo" class="form-label"
               >estado elevalunas trasero izquierdo</label
-            ><select
+              >
+            <select
               name="estado-elevalunas-trasero-izquierdo"
               id="estado-elevalunas-trasero-izquierdo"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-elevalunas-trasero-izquierdo-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="radio" class="form-label">radio</label
-            ><select name="radio" id="radio" class="form-control">
+              >
+            <select name="radio" id="radio" class="form-control">
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
             </select>
+            <textarea name="radio-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-cerraduras" class="form-label"
               >estado cerraduras</label
-            ><select
+              >
+            <select
               name="estado-cerraduras"
               id="estado-cerraduras"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-cerraduras-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-cinturones-seguridad" class="form-label"
               >estado cinturones seguridad</label
-            ><select
+              >
+            <select
               name="estado-cinturones-seguridad"
               id="estado-cinturones-seguridad"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-cinturones-seguridad-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="guarnecidos" class="form-label">guarnecidos</label
-            ><select name="guarnecidos" id="guarnecidos" class="form-control">
+              >
+            <select name="guarnecidos" id="guarnecidos" class="form-control">
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
             </select>
+            <textarea name="guarnecidos-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="parasol-y-retrovisor-interior" class="form-label"
               >parasol y retrovisor interior</label
-            ><select
+              >
+            <select
               name="parasol-y-retrovisor-interior"
               id="parasol-y-retrovisor-interior"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="parasol-y-retrovisor-interior-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="botoneras" class="form-label">botoneras</label
-            ><select name="botoneras" id="botoneras" class="form-control">
+              >
+            <select name="botoneras" id="botoneras" class="form-control">
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
             </select>
+            <textarea name="botoneras-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="cenicero-central" class="form-label"
               >cenicero central</label
-            ><select
+              >
+            <select
               name="cenicero-central"
               id="cenicero-central"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="cenicero-central-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="encendedor" class="form-label">encendedor</label
-            ><select name="encendedor" id="encendedor" class="form-control">
+              >
+            <select name="encendedor" id="encendedor" class="form-control">
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
             </select>
+            <textarea name="encendedor-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="velocimetro" class="form-label">velocímetro</label
-            ><select name="velocimetro" id="velocimetro" class="form-control">
+              >
+            <select name="velocimetro" id="velocimetro" class="form-control">
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
             </select>
+            <textarea name="velocimetro-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="cuentarrevoluciones" class="form-label"
               >cuentarrevoluciones</label
-            ><select
+              >
+            <select
               name="cuentarrevoluciones"
               id="cuentarrevoluciones"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="cuentarrevoluciones-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="cierre-centralizado" class="form-label"
               >cierre centralizado</label
-            ><select
+              >
+            <select
               name="cierre-centralizado"
               id="cierre-centralizado"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="cierre-centralizado-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="asientos-y-tapizados" class="form-label"
               >asientos y tapizados</label
-            ><select
+              >
+            <select
               name="asientos-y-tapizados"
               id="asientos-y-tapizados"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="asientos-y-tapizados-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="retrovisor-interior" class="form-label"
               >retrovisor interior</label
-            ><select
+              >
+            <select
               name="retrovisor-interior"
               id="retrovisor-interior"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="retrovisor-interior-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="claxon" class="form-label">claxon</label
-            ><select name="claxon" id="claxon" class="form-control">
+              >
+            <select name="claxon" id="claxon" class="form-control">
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
             </select>
+            <textarea name="claxon-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="calefaccion" class="form-label">calefacción</label
-            ><select name="calefaccion" id="calefaccion" class="form-control">
+              >
+            <select name="calefaccion" id="calefaccion" class="form-control">
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
             </select>
+            <textarea name="calefaccion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="aire-acondicionado" class="form-label"
               >aire acondicionado</label
-            ><select
+              >
+            <select
               name="aire-acondicionado"
               id="aire-acondicionado"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="aire-acondicionado-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="gps" class="form-label">gps</label
-            ><select name="gps" id="gps" class="form-control">
+              >
+            <select name="gps" id="gps" class="form-control">
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
             </select>
+            <textarea name="gps-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
-
           <div class="col-12">
             <label for="interior-valoracion" class="form-label"
               >Valoración general</label
-            >
+              >
             <textarea
               class="form-control"
               id="interior-valoracion"
               name="interior-valoracion"
               rows="8"
-            ></textarea>
+              ></textarea>
           </div>
-
           <div class="col-12">
             <h3>diagnosis</h3>
           </div>
-
           <div class="col-md-6 col-lg-4">
             <label for="diagnosis-general" class="form-label"
               >diagnosis general</label
-            ><select
+              >
+            <select
               name="diagnosis-general"
               id="diagnosis-general"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="diagnosis-general-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-
           <div class="col-12">
             <h3>zona exterior delantera</h3>
           </div>
-
           <div class="col-md-6 col-lg-4">
             <label for="danios-carroceria" class="form-label"
               >daños carrocería</label
-            ><select
+              >
+            <select
               name="danios-carroceria"
               id="danios-carroceria"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="danios-carroceria-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="luz-posicion-delantera" class="form-label"
               >luz posición</label
-            ><select
+              >
+            <select
               name="luz-posicion-delantera"
               id="luz-posicion-delantera"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="luz-posicion-delantera-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="luz-corta" class="form-label">luz corta</label
-            ><select name="luz-corta" id="luz-corta" class="form-control">
+              >
+            <select name="luz-corta" id="luz-corta" class="form-control">
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
             </select>
+            <textarea name="luz-corta-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="luz-larga" class="form-label">luz larga</label
-            ><select name="luz-larga" id="luz-larga" class="form-control">
+              >
+            <select name="luz-larga" id="luz-larga" class="form-control">
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
             </select>
+            <textarea name="luz-larga-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="luz-intermitentes-delantera" class="form-label"
               >luz intermitentes</label
-            ><select
+              >
+            <select
               name="luz-intermitentes-delantera"
               id="luz-intermitentes-delantera"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="luz-intermitentes-delantera-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="luz-nieblas" class="form-label">luz nieblas</label
-            ><select name="luz-nieblas" id="luz-nieblas" class="form-control">
+              >
+            <select name="luz-nieblas" id="luz-nieblas" class="form-control">
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
             </select>
+            <textarea name="luz-nieblas-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="sistema-lavado-faros" class="form-label"
               >sistema lavado faros</label
-            ><select
+              >
+            <select
               name="sistema-lavado-faros"
               id="sistema-lavado-faros"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="sistema-lavado-faros-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="limpiaparabrisas-delanteros" class="form-label"
               >limpiaparabrisas delanteros</label
-            ><select
+              >
+            <select
               name="limpiaparabrisas-delanteros"
               id="limpiaparabrisas-delanteros"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="limpiaparabrisas-delanteros-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-
           <div class="col-12">
             <label for="exterior-delantera-valoracion" class="form-label"
               >Valoración general</label
-            >
+              >
             <textarea
               class="form-control"
               id="exterior-delantera-valoracion"
               name="exterior-delantera-valoracion"
               rows="8"
-            ></textarea>
+              ></textarea>
           </div>
-
           <div class="col-12">
             <h3>zona exterior trasera</h3>
           </div>
-
           <div class="col-md-6 col-lg-4">
             <label for="danios-exterior-trasero" class="form-label"
               >daños exterior trasero</label
-            ><select
+              >
+            <select
               name="danios-exterior-trasero"
               id="danios-exterior-trasero"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="danios-exterior-trasero-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="luz-freno" class="form-label">luz freno</label
-            ><select name="luz-freno" id="luz-freno" class="form-control">
+              >
+            <select name="luz-freno" id="luz-freno" class="form-control">
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
             </select>
+            <textarea name="luz-freno-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="luz-intermitentes-trasera" class="form-label"
               >luz intermitentes</label
-            ><select
+              >
+            <select
               name="luz-intermitentes-trasera"
               id="luz-intermitentes-trasera"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="luz-intermitentes-trasera-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="luz-posicion-trasera" class="form-label"
               >luz posicion</label
-            ><select
+              >
+            <select
               name="luz-posicion-trasera"
               id="luz-posicion-trasera"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="luz-posicion-trasera-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="luz-marcha-atras" class="form-label"
               >luz marcha atrás</label
-            ><select
+              >
+            <select
               name="luz-marcha-atras"
               id="luz-marcha-atras"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="luz-marcha-atras-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="luz-niebla-trasero" class="form-label"
               >luz niebla trasero</label
-            ><select
+              >
+            <select
               name="luz-niebla-trasero"
               id="luz-niebla-trasero"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="luz-niebla-trasero-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="limpias-parabrisas-trasero" class="form-label"
               >limpias parabrisas trasero</label
-            ><select
+              >
+            <select
               name="limpias-parabrisas-trasero"
               id="limpias-parabrisas-trasero"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="limpias-parabrisas-trasero-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-
           <div class="col-12">
             <label for="exterior-trasera-valoracion" class="form-label"
               >Valoración general</label
-            >
+              >
             <textarea
               class="form-control"
               id="exterior-trasera-valoracion"
               name="exterior-trasera-valoracion"
               rows="8"
-            ></textarea>
+              ></textarea>
           </div>
-
           <div class="col-12">
             <h3>lateral derecho</h3>
           </div>
-
           <div class="col-md-6 col-lg-4">
             <label for="estado-carroceria-derecho" class="form-label"
               >estado carroceria</label
-            ><select
+              >
+            <select
               name="estado-carroceria-derecho"
               id="estado-carroceria-derecho"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-carroceria-derecho-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="retrovisor-derecho" class="form-label"
               >retrovisor derecho</label
-            ><select
+              >
+            <select
               name="retrovisor-derecho"
               id="retrovisor-derecho"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="retrovisor-derecho-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="intermitentes-derechos" class="form-label"
               >intermitentes derechos</label
-            ><select
+              >
+            <select
               name="intermitentes-derechos"
               id="intermitentes-derechos"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="intermitentes-derechos-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-
           <div class="col-12">
             <label for="lateral-derecho-valoracion" class="form-label"
               >Valoración general</label
-            >
+              >
             <textarea
               class="form-control"
               id="lateral-derecho-valoracion"
               name="lateral-derecho-valoracion"
               rows="8"
-            ></textarea>
+              ></textarea>
           </div>
-
           <div class="col-12">
             <h3>lateral izquierdo</h3>
           </div>
-
           <div class="col-md-6 col-lg-4">
             <label for="estado-carroceria-izquierdo" class="form-label"
               >estado carroceria</label
-            ><select
+              >
+            <select
               name="estado-carroceria-izquierdo"
               id="estado-carroceria-izquierdo"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-carroceria-izquierdo-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="retrovisor-izq" class="form-label">retrovisor izq</label
-            ><select
+              >
+            <select
               name="retrovisor-izq"
               id="retrovisor-izq"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="retrovisor-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="intermitente-izq" class="form-label"
               >intermitente izq</label
-            ><select
+              >
+            <select
               name="intermitente-izq"
               id="intermitente-izq"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="intermitente-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-
           <div class="col-12">
             <label for="lateral-izquierdo-valoracion" class="form-label"
               >Valoración general</label
-            >
+              >
             <textarea
               class="form-control"
               id="lateral-izquierdo-valoracion"
               name="lateral-izquierdo-valoracion"
               rows="8"
-            ></textarea>
+              ></textarea>
           </div>
-
           <div class="col-12">
             <h3>vano motor</h3>
           </div>
-
           <div class="col-md-6 col-lg-4">
             <label for="estado-visual" class="form-label">estado visual</label
-            ><select
+              >
+            <select
               name="estado-visual"
               id="estado-visual"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-visual-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="nivel-liquido-limpiaparabrisas" class="form-label"
               >nivel liquido limpiaparabrisas</label
-            ><select
+              >
+            <select
               name="nivel-liquido-limpiaparabrisas"
               id="nivel-liquido-limpiaparabrisas"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="nivel-liquido-limpiaparabrisas-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-plasticos-protectores" class="form-label"
               >estado plásticos/protectores</label
-            ><select
+              >
+            <select
               name="estado-plasticos-protectores"
               id="estado-plasticos-protectores"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-plasticos-protectores-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="nivel-liquido-anticongelante" class="form-label"
               >nivel liquido anticongelante</label
-            ><select
+              >
+            <select
               name="nivel-liquido-anticongelante"
               id="nivel-liquido-anticongelante"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="nivel-liquido-anticongelante-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-soportes-de-motor" class="form-label"
               >estado soportes de motor</label
-            ><select
+              >
+            <select
               name="estado-soportes-de-motor"
               id="estado-soportes-de-motor"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-soportes-de-motor-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-
           <div class="col-12">
             <label for="vano-motor-valoracion" class="form-label"
               >Valoración general</label
-            >
+              >
             <textarea
               class="form-control"
               id="vano-motor-valoracion"
               name="vano-motor-valoracion"
               rows="8"
-            ></textarea>
+              ></textarea>
           </div>
-
           <div class="col-12">
             <h3>MOTOR</h3>
           </div>
-
           <div class="col-md-6 col-lg-4">
             <label for="nivel-aceite" class="form-label">nivel aceite</label
-            ><select name="nivel-aceite" id="nivel-aceite" class="form-control">
+              >
+            <select name="nivel-aceite" id="nivel-aceite" class="form-control">
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
             </select>
+            <textarea name="nivel-aceite-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="sistemas-electricos" class="form-label"
               >sistemas eléctricos</label
-            ><select
+              >
+            <select
               name="sistemas-electricos"
               id="sistemas-electricos"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="sistemas-electricos-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="sistema-correa-auxiliar" class="form-label"
               >sistema correa auxiliar</label
-            ><select
+              >
+            <select
               name="sistema-correa-auxiliar"
               id="sistema-correa-auxiliar"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="sistema-correa-auxiliar-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="sistema-de-distribucion" class="form-label"
               >sistema de distribución</label
-            ><select
+              >
+            <select
               name="sistema-de-distribucion"
               id="sistema-de-distribucion"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="sistema-de-distribucion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="sistema-escape" class="form-label">sistema escape</label
-            ><select
+              >
+            <select
               name="sistema-escape"
               id="sistema-escape"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="sistema-escape-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="perdidas-de-aceite-motor" class="form-label"
               >pérdidas de aceite</label
-            ><select
+              >
+            <select
               name="perdidas-de-aceite-motor"
               id="perdidas-de-aceite-motor"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="perdidas-de-aceite-motor-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="perdidas-refrigerante" class="form-label"
               >pérdidas refrigerante</label
-            ><select
+              >
+            <select
               name="perdidas-refrigerante"
               id="perdidas-refrigerante"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="perdidas-refrigerante-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="perdidas-combustible" class="form-label"
               >pérdidas combustible</label
-            ><select
+              >
+            <select
               name="perdidas-combustible"
               id="perdidas-combustible"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="perdidas-combustible-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="perdidas-adblue" class="form-label"
               >pérdidas adblue</label
-            ><select
+              >
+            <select
               name="perdidas-adblue"
               id="perdidas-adblue"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="perdidas-adblue-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="ralenti-correcto" class="form-label"
               >ralentí correcto</label
-            ><select
+              >
+            <select
               name="ralenti-correcto"
               id="ralenti-correcto"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="ralenti-correcto-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="ruidos-de-motor" class="form-label"
               >ruidos de motor</label
-            ><select
+              >
+            <select
               name="ruidos-de-motor"
               id="ruidos-de-motor"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="ruidos-de-motor-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="vibraciones" class="form-label">vibraciones</label
-            ><select name="vibraciones" id="vibraciones" class="form-control">
+              >
+            <select name="vibraciones" id="vibraciones" class="form-control">
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
             </select>
+            <textarea name="vibraciones-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="humos" class="form-label">humos</label
-            ><select name="humos" id="humos" class="form-control">
+              >
+            <select name="humos" id="humos" class="form-control">
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
             </select>
+            <textarea name="humos-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
-
           <div class="col-12">
             <label for="motor-valoracion" class="form-label"
               >Valoración general</label
-            >
+              >
             <textarea
               class="form-control"
               id="motor-valoracion"
               name="motor-valoracion"
               rows="8"
-            ></textarea>
+              ></textarea>
           </div>
-
           <div class="col-12">
             <h3>CIRCUITO REFRIGERACION</h3>
           </div>
-
           <div class="col-md-6 col-lg-4">
             <label for="temperatura-del-motor" class="form-label"
               >temperatura del motor</label
-            ><select
+              >
+            <select
               name="temperatura-del-motor"
               id="temperatura-del-motor"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="temperatura-del-motor-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="nivel-y-estado-refrigerante" class="form-label"
               >nivel y estado refrigerante</label
-            ><select
+              >
+            <select
               name="nivel-y-estado-refrigerante"
               id="nivel-y-estado-refrigerante"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="nivel-y-estado-refrigerante-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-de-radiadores" class="form-label"
               >estado de radiadores</label
-            ><select
+              >
+            <select
               name="estado-de-radiadores"
               id="estado-de-radiadores"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-de-radiadores-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-electroventiladores" class="form-label"
               >estado electroventiladores</label
-            ><select
+              >
+            <select
               name="estado-electroventiladores"
               id="estado-electroventiladores"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-electroventiladores-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-
           <div class="col-12">
             <label for="circuito-refrigeracion-valoracion" class="form-label"
               >Valoración general</label
-            >
+              >
             <textarea
               class="form-control"
               id="circuito-refrigeracion-valoracion"
               name="circuito-refrigeracion-valoracion"
               rows="8"
-            ></textarea>
+              ></textarea>
           </div>
-
           <div class="col-12">
             <h3>SISTEMA EMBRAGUE</h3>
           </div>
-
           <div class="col-md-6 col-lg-4">
             <label
               for="funcionamiento-embrague-sistema-hidraulico"
               class="form-label"
               >funcionamiento embrague sistema hidráulico</label
-            ><select
+              >
+            <select
               name="funcionamiento-embrague-sistema-hidraulico"
               id="funcionamiento-embrague-sistema-hidraulico"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="funcionamiento-embrague-sistema-hidraulico-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-
           <div class="col-12">
             <label for="sistema-embrague-valoracion" class="form-label"
               >Valoración general</label
-            >
+              >
             <textarea
               class="form-control"
               id="sistema-embrague-valoracion"
               name="sistema-embrague-valoracion"
               rows="8"
-            ></textarea>
+              ></textarea>
           </div>
-
           <div class="col-12">
             <h3>SISTEMA CAMBIO DE MARCHAS</h3>
           </div>
-
           <div class="col-md-6 col-lg-4">
             <label for="funcionamiento-sistema-manual" class="form-label"
               >funcionamiento sistema manual</label
-            ><select
+              >
+            <select
               name="funcionamiento-sistema-manual"
               id="funcionamiento-sistema-manual"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="funcionamiento-sistema-manual-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="funcionamiento-sistema-automatico" class="form-label"
               >funcionamiento sistema automático</label
-            ><select
+              >
+            <select
               name="funcionamiento-sistema-automatico"
               id="funcionamiento-sistema-automatico"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="funcionamiento-sistema-automatico-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="sistema-palanquearia" class="form-label"
               >sistema palanquearía</label
-            ><select
+              >
+            <select
               name="sistema-palanquearia"
               id="sistema-palanquearia"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="sistema-palanquearia-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-
           <div class="col-12">
             <label for="cambio-marchas-valoracion" class="form-label"
               >Valoración general</label
-            >
+              >
             <textarea
               class="form-control"
               id="cambio-marchas-valoracion"
               name="cambio-marchas-valoracion"
               rows="8"
-            ></textarea>
+              ></textarea>
           </div>
-
           <div class="col-12">
             <h3>AMORTIGUADORES</h3>
           </div>
-
           <div class="col-md-6 col-lg-4">
             <label for="estado-amortiguador-d-derecho" class="form-label"
               >estado amortiguador d/derecho</label
-            ><select
+              >
+            <select
               name="estado-amortiguador-d-derecho"
               id="estado-amortiguador-d-derecho"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-amortiguador-d-derecho-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-amortiguador-d-izq" class="form-label"
               >estado amortiguador d/izq</label
-            ><select
+              >
+            <select
               name="estado-amortiguador-d-izq"
               id="estado-amortiguador-d-izq"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-amortiguador-d-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-amortiguador-tra-derecho" class="form-label"
               >estado amortiguador tra/derecho</label
-            ><select
+              >
+            <select
               name="estado-amortiguador-tra-derecho"
               id="estado-amortiguador-tra-derecho"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-amortiguador-tra-derecho-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-amortiguador-tra-izq" class="form-label"
               >estado amortiguador tra/izq</label
-            ><select
+              >
+            <select
               name="estado-amortiguador-tra-izq"
               id="estado-amortiguador-tra-izq"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-amortiguador-tra-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-
           <div class="col-12">
             <label for="amortiguadores-valoracion" class="form-label"
               >Valoración general</label
-            >
+              >
             <textarea
               class="form-control"
               id="amortiguadores-valoracion"
               name="amortiguadores-valoracion"
               rows="8"
-            ></textarea>
+              ></textarea>
           </div>
-
           <div class="col-12">
             <h3>FRENOS</h3>
           </div>
-
           <div class="col-md-6 col-lg-4">
             <label for="discos-delanteros" class="form-label"
               >discos delanteros</label
-            ><select
+              >
+            <select
               name="discos-delanteros"
               id="discos-delanteros"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="discos-delanteros-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="discos-traseros" class="form-label"
               >discos traseros</label
-            ><select
+              >
+            <select
               name="discos-traseros"
               id="discos-traseros"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="discos-traseros-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="pastillas-delanteras" class="form-label"
               >pastillas delanteras</label
-            ><select
+              >
+            <select
               name="pastillas-delanteras"
               id="pastillas-delanteras"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="pastillas-delanteras-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="pastillas-traseras" class="form-label"
               >pastillas traseras</label
-            ><select
+              >
+            <select
               name="pastillas-traseras"
               id="pastillas-traseras"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="pastillas-traseras-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="nivel-liquido-de-freno" class="form-label"
               >nivel liquido de freno</label
-            ><select
+              >
+            <select
               name="nivel-liquido-de-freno"
               id="nivel-liquido-de-freno"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="nivel-liquido-de-freno-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="perdidas-de-liquido-de-freno" class="form-label"
               >perdidas de liquido de freno</label
-            ><select
+              >
+            <select
               name="perdidas-de-liquido-de-freno"
               id="perdidas-de-liquido-de-freno"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="perdidas-de-liquido-de-freno-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-freno-de-mano" class="form-label"
               >estado freno de mano</label
-            ><select
+              >
+            <select
               name="estado-freno-de-mano"
               id="estado-freno-de-mano"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-freno-de-mano-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-
           <div class="col-12">
             <label for="frenos-valoracion" class="form-label"
               >Valoración general</label
-            >
+              >
             <textarea
               class="form-control"
               id="frenos-valoracion"
               name="frenos-valoracion"
               rows="8"
-            ></textarea>
+              ></textarea>
           </div>
-
           <div class="col-12">
             <h3>DIRECCIÓN</h3>
           </div>
-
           <div class="col-md-6 col-lg-4">
             <label for="funcionamiento-direccion" class="form-label"
               >funcionamiento dirección</label
-            ><select
+              >
+            <select
               name="funcionamiento-direccion"
               id="funcionamiento-direccion"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="funcionamiento-direccion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="perdidas-de-aceite-direccion" class="form-label"
               >pérdidas de aceite</label
-            ><select
+              >
+            <select
               name="perdidas-de-aceite-direccion"
               id="perdidas-de-aceite-direccion"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="perdidas-de-aceite-direccion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="vibraciones-en-la-direccion" class="form-label"
               >vibraciones en la dirección</label
-            ><select
+              >
+            <select
               name="vibraciones-en-la-direccion"
               id="vibraciones-en-la-direccion"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="vibraciones-en-la-direccion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-
           <div class="col-12">
             <label for="direccion-valoracion" class="form-label"
               >Valoración general</label
-            >
+              >
             <textarea
               class="form-control"
               id="direccion-valoracion"
               name="direccion-valoracion"
               rows="8"
-            ></textarea>
+              ></textarea>
           </div>
-
           <div class="col-12">
             <h3>NEUMÁTICOS</h3>
           </div>
-
           <div class="col-md-6 col-lg-4">
             <label for="estado-llanta-delantera-derecha" class="form-label"
               >estado llanta delantera derecha</label
-            ><select
+              >
+            <select
               name="estado-llanta-delantera-derecha"
               id="estado-llanta-delantera-derecha"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-llanta-delantera-derecha-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-llanta-delantera-izquierda" class="form-label"
               >estado llanta delantera izquierda</label
-            ><select
+              >
+            <select
               name="estado-llanta-delantera-izquierda"
               id="estado-llanta-delantera-izquierda"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-llanta-delantera-izquierda-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-llanta-trasera-derecha" class="form-label"
               >estado llanta trasera derecha</label
-            ><select
+              >
+            <select
               name="estado-llanta-trasera-derecha"
               id="estado-llanta-trasera-derecha"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-llanta-trasera-derecha-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-llanta-trasera-izquierda" class="form-label"
               >estado llanta trasera izquierda</label
-            ><select
+              >
+            <select
               name="estado-llanta-trasera-izquierda"
               id="estado-llanta-trasera-izquierda"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-llanta-trasera-izquierda-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="comprobacion-presiones-neumaticos" class="form-label"
               >comprobación presiones neumáticos</label
-            ><select
+              >
+            <select
               name="comprobacion-presiones-neumaticos"
               id="comprobacion-presiones-neumaticos"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="comprobacion-presiones-neumaticos-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="neumaticos-pinchados" class="form-label"
               >neumáticos pinchados</label
-            ><select
+              >
+            <select
               name="neumaticos-pinchados"
               id="neumaticos-pinchados"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="neumaticos-pinchados-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-neumaticos-traseros" class="form-label"
               >estado neumaticos traseros</label
-            ><select
+              >
+            <select
               name="estado-neumaticos-traseros"
               id="estado-neumaticos-traseros"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-neumaticos-traseros-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-neumaticos-delanteros" class="form-label"
               >estado neumaticos delanteros</label
-            ><select
+              >
+            <select
               name="estado-neumaticos-delanteros"
               id="estado-neumaticos-delanteros"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="estado-neumaticos-delanteros-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-
           <div class="col-12">
             <label for="neumaticos-valoracion" class="form-label"
               >Valoración general</label
-            >
+              >
             <textarea
               class="form-control"
               id="neumaticos-valoracion"
               name="neumaticos-valoracion"
               rows="8"
-            ></textarea>
+              ></textarea>
           </div>
-
           <div class="col-12">
             <h3>ESTADO LUNAS/VIDRIOS</h3>
           </div>
-
           <div class="col-md-6 col-lg-4">
             <label for="luna-delantera" class="form-label">luna delantera</label
-            ><select
+              >
+            <select
               name="luna-delantera"
               id="luna-delantera"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="luna-delantera-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="luna-trasera" class="form-label">luna trasera</label
-            ><select name="luna-trasera" id="luna-trasera" class="form-control">
+              >
+            <select name="luna-trasera" id="luna-trasera" class="form-control">
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
             </select>
+            <textarea name="luna-trasera-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="vidrio-delantero-derecho" class="form-label"
               >vidrio delantero derecho</label
-            ><select
+              >
+            <select
               name="vidrio-delantero-derecho"
               id="vidrio-delantero-derecho"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="vidrio-delantero-derecho-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="vidrio-delantero-izq" class="form-label"
               >vidrio delantero izq</label
-            ><select
+              >
+            <select
               name="vidrio-delantero-izq"
               id="vidrio-delantero-izq"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="vidrio-delantero-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="vidrio-trasero-derecho" class="form-label"
               >vidrio trasero derecho</label
-            ><select
+              >
+            <select
               name="vidrio-trasero-derecho"
               id="vidrio-trasero-derecho"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="vidrio-trasero-derecho-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="vidrio-trasero-izq" class="form-label"
               >vidrio trasero izq</label
-            ><select
+              >
+            <select
               name="vidrio-trasero-izq"
               id="vidrio-trasero-izq"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="vidrio-trasero-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="vidrio-custodia-delantera-derecha" class="form-label"
               >vidrio custodia delantera derecha</label
-            ><select
+              >
+            <select
               name="vidrio-custodia-delantera-derecha"
               id="vidrio-custodia-delantera-derecha"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="vidrio-custodia-delantera-derecha-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="vidrio-custodia-delantero-izq" class="form-label"
               >vidrio custodia delantero izq</label
-            ><select
+              >
+            <select
               name="vidrio-custodia-delantero-izq"
               id="vidrio-custodia-delantero-izq"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
-              <option value="ND">ND</option>
-              <option value="OK">OK</option>
-              <option value="X">×</option>
+              <option value="verde">Verde</option>
+              <option value="amarillo">Amarillo</option>
+              <option value="rojo">Rojo</option>
+              <textarea name="vidrio-custodia-delantero-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-
           <div class="col-12">
             <label for="luna-vidrios-valoracion" class="form-label"
               >Valoración general</label
-            >
+              >
             <textarea
               class="form-control"
               id="luna-vidrios-valoracion"
               name="luna-vidrios-valoracion"
               rows="8"
-            ></textarea>
+              ></textarea>
           </div>
-
           <div class="col-12">
             <h3>Documentación</h3>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="pasar-itv" class="form-label"
               >el v.h necesita pasar ITV?</label
-            ><select name="pasar-itv" id="pasar-itv" class="form-control">
+              >
+            <select name="pasar-itv" id="pasar-itv" class="form-control">
               <option class="empty-option" selected value></option>
               <option value="Si">Si</option>
               <option value="No">No</option>
             </select>
+            <textarea name="pasar-itv-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="documentacion-original-itv" class="form-label"
               >el v.h tiene la documentación original necesaria para la ITV? </label
-            ><select
+              >
+            <select
               name="documentacion-original-itv"
               id="documentacion-original-itv"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
               <option value="Si">Si</option>
               <option value="No">No</option>
             </select>
+            <textarea name="documentacion-original-itv-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="libro-de-mantenimiento-instrucciones" class="form-label"
               >el v.h tiene los libros de mantenimiento e instrucciones? </label
-            ><select
+              >
+            <select
               name="libro-de-mantenimiento-instrucciones"
               id="libro-de-mantenimiento-instrucciones"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
               <option value="Si">Si</option>
               <option value="No">No</option>
             </select>
+            <textarea name="libro-de-mantenimiento-instrucciones-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="permiso-de-circulacion" class="form-label"
               >el v.h tiene permiso de circulación? </label
-            ><select
+              >
+            <select
               name="permiso-de-circulacion"
               id="permiso-de-circulacion"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
               <option value="Si">Si</option>
               <option value="No">No</option>
             </select>
+            <textarea name="permiso-de-circulacion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="ficha-tecnica" class="form-label"
               >el v.h tiene ficha técnica?</label
-            ><select
+              >
+            <select
               name="ficha-tecnica"
               id="ficha-tecnica"
               class="form-control"
-            >
+              >
               <option class="empty-option" selected value></option>
               <option value="Si">Si</option>
               <option value="No">No</option>
             </select>
+            <textarea name="ficha-tecnica-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
-
           <div class="col-12">
             <h3>Datos del Perito</h3>
           </div>
-
           <div class="col-md-6 col-lg-4">
             <label for="nombre-perito" class="form-label">Nombre</label>
             <input
@@ -1887,7 +2246,7 @@
               class="form-control"
               id="nombre-perito"
               name="nombre-perito"
-            />
+              />
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="lugar-perito" class="form-label">Lugar</label>
@@ -1896,7 +2255,7 @@
               class="form-control"
               id="lugar-perito"
               name="lugar-perito"
-            />
+              />
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="fecha-perito" class="form-label">Fecha</label>
@@ -1905,20 +2264,19 @@
               class="form-control"
               id="fecha-perito"
               name="fecha-perito"
-            />
+              />
           </div>
           <div class="col-12">
             <label for="valoracion-perito" class="form-label"
               >Valoración personal</label
-            >
+              >
             <textarea
               class="form-control"
               id="valoracion-perito"
               name="valoracion-perito"
               rows="8"
-            ></textarea>
+              ></textarea>
           </div>
-
           <div class="col-12">
             <label for="firma" class="form-label">Firma</label>
             <input type="hidden" id="firma-input" name="firma" />
@@ -1926,10 +2284,9 @@
             <canvas id="firma"></canvas>
             <br />
             <button type="button" id="borrar-firma" class="btn btn-dark">
-              Borrar Firma
+            Borrar Firma
             </button>
           </div>
-
           <div class="col-12">
             <h3>Archivos</h3>
           </div>
@@ -1940,55 +2297,21 @@
               id="archivos"
               name="archivos"
               multiple
-            />
+              />
           </div>
-
           <div
             class="col-12 pt-5 pb-4 pb-md-5 mt-md-5 d-flex justify-content-center"
-          >
+            >
             <button type="submit" class="btn btn-primary btn-lg" id="generar">
-              Generar PDF
+            Generar PDF
             </button>
           </div>
         </form>
       </div>
     </section>
-
-    <script>
-      // window.scrollTo(0, document.body.scrollHeight)
-    </script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
-
-    <script>
-      const canvas = document.getElementById("firma")
-      const signaturePad = new SignaturePad(canvas)
-
-      document.getElementById("borrar-firma").addEventListener("click", () => {
-        signaturePad.clear()
-      })
-
-      function resizeCanvas() {
-        const ratio = Math.max(window.devicePixelRatio || 1, 1)
-
-        canvas.width = canvas.offsetWidth * ratio
-        canvas.height = canvas.offsetHeight * ratio
-        canvas.getContext("2d").scale(ratio, ratio)
-
-        signaturePad.fromData(signaturePad.toData())
-      }
-      addEventListener("resize", resizeCanvas)
-      resizeCanvas()
-
-      document.getElementById("generar").addEventListener("click", (e) => {
-        e.preventDefault()
-        document.getElementById("firma-input").value =
-          signaturePad.toDataURL("image/svg+xml")
-        document.getElementById("form-principal").submit()
-      })
-    </script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/signature_pad.umd.min.js"></script>
+    <script src="js/fabric.min.js"></script>
+    <script src="js/custom.js"></script>
   </body>
 </html>
