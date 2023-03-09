@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <section class="login">
+      <div class="container d-flex flex-column justify-content-center align-items-center vh-100">
+        <div style="margin-top: -98px;"> 
+          <img style="height: 98px;" src="images/logo.png" alt="Informes Mecánicos" />
+        </div>
+        <div>
+          <form method="POST" action="/login" class="w-100">
+            <form>
+              <div class="mb-3">
+                <label for="username" class="form-label">Nombre de usuario</label>
+                <input type="text" class="form-control" id="username" name="username">              
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" name="password">
+              </div>
+              <button type="submit" class="btn btn-primary">Entrar</button>
+            </form>
+          </form>
+        </div>
+      </div>
+    </section>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

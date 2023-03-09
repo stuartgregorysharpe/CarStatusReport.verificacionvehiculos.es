@@ -4,7 +4,7 @@
     <%- include('../partials/head') %>
   </head>
   <body>
-    <%- include('../partials/navbar', {isAdmin: data['isAdmin']}) %>
+    <%- include('../partials/navbar') %>
     <section class="forms py-4 py-lg-5">
       <div class="container-xl">
         <form
@@ -138,17 +138,7 @@
               name="inspeccion-tecnica"
               />
           </div>
-          <div class="col-12">
-            <h3>ACTUACIONES</h3>
-          </div>
-          <div class="col-12">
-            <textarea
-              class="form-control"
-              id="actuaciones"
-              name="actuaciones"
-              rows="8"
-              ></textarea>
-          </div>
+          
 
           <div class="col-12">
             <h3>ESTADO DEL VEHÍCULO</h3>
@@ -746,17 +736,7 @@
             </select>
             <textarea name="gps-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
-          <div class="col-12">
-            <label for="interior-valoracion" class="form-label"
-              >Valoración general</label
-              >
-            <textarea
-              class="form-control"
-              id="interior-valoracion"
-              name="interior-valoracion"
-              rows="8"
-              ></textarea>
-          </div>
+          
           <div class="col-12">
             <h3>diagnosis</h3>
           </div>
@@ -892,17 +872,7 @@
               <textarea name="limpiaparabrisas-delanteros-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-          <div class="col-12">
-            <label for="exterior-delantera-valoracion" class="form-label"
-              >Valoración general</label
-              >
-            <textarea
-              class="form-control"
-              id="exterior-delantera-valoracion"
-              name="exterior-delantera-valoracion"
-              rows="8"
-              ></textarea>
-          </div>
+          
           <div class="col-12">
             <h3>zona exterior trasera</h3>
           </div>
@@ -1013,17 +983,7 @@
               <textarea name="limpias-parabrisas-trasero-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-          <div class="col-12">
-            <label for="exterior-trasera-valoracion" class="form-label"
-              >Valoración general</label
-              >
-            <textarea
-              class="form-control"
-              id="exterior-trasera-valoracion"
-              name="exterior-trasera-valoracion"
-              rows="8"
-              ></textarea>
-          </div>
+          
           <div class="col-12">
             <h3>lateral derecho</h3>
           </div>
@@ -1075,17 +1035,7 @@
               <textarea name="intermitentes-derechos-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-          <div class="col-12">
-            <label for="lateral-derecho-valoracion" class="form-label"
-              >Valoración general</label
-              >
-            <textarea
-              class="form-control"
-              id="lateral-derecho-valoracion"
-              name="lateral-derecho-valoracion"
-              rows="8"
-              ></textarea>
-          </div>
+          
           <div class="col-12">
             <h3>lateral izquierdo</h3>
           </div>
@@ -1136,17 +1086,7 @@
               <textarea name="intermitente-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-          <div class="col-12">
-            <label for="lateral-izquierdo-valoracion" class="form-label"
-              >Valoración general</label
-              >
-            <textarea
-              class="form-control"
-              id="lateral-izquierdo-valoracion"
-              name="lateral-izquierdo-valoracion"
-              rows="8"
-              ></textarea>
-          </div>
+          
           <div class="col-12">
             <h3>vano motor</h3>
           </div>
@@ -1229,17 +1169,7 @@
               <textarea name="estado-soportes-de-motor-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-          <div class="col-12">
-            <label for="vano-motor-valoracion" class="form-label"
-              >Valoración general</label
-              >
-            <textarea
-              class="form-control"
-              id="vano-motor-valoracion"
-              name="vano-motor-valoracion"
-              rows="8"
-              ></textarea>
-          </div>
+          
           <div class="col-12">
             <h3>MOTOR</h3>
           </div>
@@ -1435,17 +1365,7 @@
             </select>
             <textarea name="humos-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
-          <div class="col-12">
-            <label for="motor-valoracion" class="form-label"
-              >Valoración general</label
-              >
-            <textarea
-              class="form-control"
-              id="motor-valoracion"
-              name="motor-valoracion"
-              rows="8"
-              ></textarea>
-          </div>
+          
           <div class="col-12">
             <h3>CIRCUITO REFRIGERACION</h3>
           </div>
@@ -1513,17 +1433,7 @@
               <textarea name="estado-electroventiladores-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-          <div class="col-12">
-            <label for="circuito-refrigeracion-valoracion" class="form-label"
-              >Valoración general</label
-              >
-            <textarea
-              class="form-control"
-              id="circuito-refrigeracion-valoracion"
-              name="circuito-refrigeracion-valoracion"
-              rows="8"
-              ></textarea>
-          </div>
+          
           <div class="col-12">
             <h3>SISTEMA EMBRAGUE</h3>
           </div>
@@ -1545,17 +1455,7 @@
               <textarea name="funcionamiento-embrague-sistema-hidraulico-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-          <div class="col-12">
-            <label for="sistema-embrague-valoracion" class="form-label"
-              >Valoración general</label
-              >
-            <textarea
-              class="form-control"
-              id="sistema-embrague-valoracion"
-              name="sistema-embrague-valoracion"
-              rows="8"
-              ></textarea>
-          </div>
+          
           <div class="col-12">
             <h3>SISTEMA CAMBIO DE MARCHAS</h3>
           </div>
@@ -1607,17 +1507,7 @@
               <textarea name="sistema-palanquearia-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-          <div class="col-12">
-            <label for="cambio-marchas-valoracion" class="form-label"
-              >Valoración general</label
-              >
-            <textarea
-              class="form-control"
-              id="cambio-marchas-valoracion"
-              name="cambio-marchas-valoracion"
-              rows="8"
-              ></textarea>
-          </div>
+          
           <div class="col-12">
             <h3>AMORTIGUADORES</h3>
           </div>
@@ -1685,17 +1575,7 @@
               <textarea name="estado-amortiguador-tra-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-          <div class="col-12">
-            <label for="amortiguadores-valoracion" class="form-label"
-              >Valoración general</label
-              >
-            <textarea
-              class="form-control"
-              id="amortiguadores-valoracion"
-              name="amortiguadores-valoracion"
-              rows="8"
-              ></textarea>
-          </div>
+          
           <div class="col-12">
             <h3>FRENOS</h3>
           </div>
@@ -1811,17 +1691,7 @@
               <textarea name="estado-freno-de-mano-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-          <div class="col-12">
-            <label for="frenos-valoracion" class="form-label"
-              >Valoración general</label
-              >
-            <textarea
-              class="form-control"
-              id="frenos-valoracion"
-              name="frenos-valoracion"
-              rows="8"
-              ></textarea>
-          </div>
+          
           <div class="col-12">
             <h3>DIRECCIÓN</h3>
           </div>
@@ -1873,17 +1743,7 @@
               <textarea name="vibraciones-en-la-direccion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-          <div class="col-12">
-            <label for="direccion-valoracion" class="form-label"
-              >Valoración general</label
-              >
-            <textarea
-              class="form-control"
-              id="direccion-valoracion"
-              name="direccion-valoracion"
-              rows="8"
-              ></textarea>
-          </div>
+          
           <div class="col-12">
             <h3>NEUMÁTICOS</h3>
           </div>
@@ -2015,17 +1875,7 @@
               <textarea name="estado-neumaticos-delanteros-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-          <div class="col-12">
-            <label for="neumaticos-valoracion" class="form-label"
-              >Valoración general</label
-              >
-            <textarea
-              class="form-control"
-              id="neumaticos-valoracion"
-              name="neumaticos-valoracion"
-              rows="8"
-              ></textarea>
-          </div>
+          
           <div class="col-12">
             <h3>ESTADO LUNAS/VIDRIOS</h3>
           </div>
@@ -2151,17 +2001,7 @@
               <textarea name="vidrio-custodia-delantero-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
             </select>
           </div>
-          <div class="col-12">
-            <label for="luna-vidrios-valoracion" class="form-label"
-              >Valoración general</label
-              >
-            <textarea
-              class="form-control"
-              id="luna-vidrios-valoracion"
-              name="luna-vidrios-valoracion"
-              rows="8"
-              ></textarea>
-          </div>
+          
           <div class="col-12">
             <h3>Documentación</h3>
           </div>
@@ -2171,8 +2011,8 @@
               >
             <select name="pasar-itv" id="pasar-itv" class="form-control">
               <option class="empty-option" selected value></option>
-              <option value="Si">Si</option>
-              <option value="No">No</option>
+              <option value="verde">Verde</option>
+              <option value="rojo">Rojo</option>
             </select>
             <textarea name="pasar-itv-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
@@ -2186,8 +2026,8 @@
               class="form-control"
               >
               <option class="empty-option" selected value></option>
-              <option value="Si">Si</option>
-              <option value="No">No</option>
+              <option value="verde">Verde</option>
+              <option value="rojo">Rojo</option>
             </select>
             <textarea name="documentacion-original-itv-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
@@ -2201,8 +2041,8 @@
               class="form-control"
               >
               <option class="empty-option" selected value></option>
-              <option value="Si">Si</option>
-              <option value="No">No</option>
+              <option value="verde">Verde</option>
+              <option value="rojo">Rojo</option>
             </select>
             <textarea name="libro-de-mantenimiento-instrucciones-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
@@ -2216,8 +2056,8 @@
               class="form-control"
               >
               <option class="empty-option" selected value></option>
-              <option value="Si">Si</option>
-              <option value="No">No</option>
+              <option value="verde">Verde</option>
+              <option value="rojo">Rojo</option>
             </select>
             <textarea name="permiso-de-circulacion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
@@ -2231,8 +2071,8 @@
               class="form-control"
               >
               <option class="empty-option" selected value></option>
-              <option value="Si">Si</option>
-              <option value="No">No</option>
+              <option value="verde">Verde</option>
+              <option value="rojo">Rojo</option>
             </select>
             <textarea name="ficha-tecnica-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
           </div>
@@ -2266,17 +2106,7 @@
               name="fecha-perito"
               />
           </div>
-          <div class="col-12">
-            <label for="valoracion-perito" class="form-label"
-              >Valoración personal</label
-              >
-            <textarea
-              class="form-control"
-              id="valoracion-perito"
-              name="valoracion-perito"
-              rows="8"
-              ></textarea>
-          </div>
+          
           <div class="col-12">
             <label for="firma" class="form-label">Firma</label>
             <input type="hidden" id="firma-input" name="firma" />
