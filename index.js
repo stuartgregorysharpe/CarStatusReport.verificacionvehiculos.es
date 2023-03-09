@@ -33,6 +33,6 @@ app.use('/users', usersRouter)
 app.use('/pdfs', pdfsRouter)
 app.use('/mail', mailRouter)
 
-app.listen(PORT, ['192.168.1.37', 'localhost'], () => {
+app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)
 })
