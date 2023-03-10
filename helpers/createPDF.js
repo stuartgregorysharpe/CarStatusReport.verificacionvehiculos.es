@@ -3,7 +3,7 @@ const path = require('node:path')
 const puppeteer = require('puppeteer')
 
 const createPDF = async (filename, folderPath, baseURL) => {
-  const browser = await puppeteer.launch({ args: ['--disable-gpu', '--disable-setuid-sandbox', '--no-sandbox', '--no-zygote'] })
+  const browser = await puppeteer.launch({ executablePath: CHROMIUM_PATH, args: ['--disable-gpu', '--disable-setuid-sandbox', '--no-sandbox', '--no-zygote'] })
   const page = await browser.newPage()
   const websiteUrl = new URL(`${filename}.html`, `${baseURL}`).href
 
