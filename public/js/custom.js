@@ -108,6 +108,12 @@ resizeCanvas()
 document.getElementById('generar').addEventListener('click', (e) => {
   e.preventDefault()
 
+  // ocultar botón para evitar multiples clicks
+  document.getElementById('generar').classList.toggle('d-none')
+
+  // mostrar texto 'Generando PDF...'
+  document.getElementById('texto-generar').classList.toggle('d-none')
+
   // guardar grafico de daños
   document.getElementById('danios-img').value = daniosCanvas.toDataURL({ format: 'jpeg' })
 
