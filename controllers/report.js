@@ -12,11 +12,6 @@ const reportPost = (req, res, next) => {
 
   const data = { ...req.body, files: { ...req.files } }
 
-  const signatureBase64 = data.firma.split(',')[1]
-  const signatureDecoded = Buffer.from(signatureBase64, 'base64').toString('utf8')
-
-  data.firma = signatureDecoded
-
   ejs.renderFile('views/pages/report.ejs', { data }, {}, function (error, html) {
     (async (error, html) => {
       try {

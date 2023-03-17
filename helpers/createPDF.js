@@ -7,9 +7,10 @@ const createPDF = async (filename, folderPath, baseURL) => {
   const page = await browser.newPage()
   const websiteUrl = new URL(`${filename}.html`, `${baseURL}`).href
 
-  await page.goto(websiteUrl, { waitUntil: 'networkidle0' })
+  await page.goto(websiteUrl, { timeout: 0, waitUntil: 'networkidle0' })
   await page.emulateMediaType('screen')
   await page.pdf({
+    timeout: 0,
     path: path.join(ROOT_PATH, folderPath, `${filename}.pdf`),
     margin: { top: '15px', right: '15px', bottom: '15px', left: '15px' },
     printBackground: true,

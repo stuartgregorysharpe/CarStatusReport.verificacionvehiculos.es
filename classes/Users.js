@@ -18,7 +18,7 @@ class Users {
         await this.updateUserFile('[]')
         file = await readFile(this.path)
       } else {
-        throw new Error(error)
+        throw error
       }
     }
     this.users = JSON.parse(file)
@@ -44,15 +44,15 @@ class Users {
 
   getUserIndex (username) {
     try {
-      if (!this.users) throw new Error('ejecutar load()')
-      if (!username) throw new Error('usuario invalido')
+      if (!this.users) throw new Error('array de usuarios undefined, ejecutar load()')
+      if (!username) throw new Error(`usuario ${username} invalido`)
       const index = this.users.findIndex(user => user.username === username)
 
-      if (index === -1) throw new Error('usuario no encontrado')
+      if (index === -1) throw new Error(`usuario ${username} no encontrado`)
 
       return index
     } catch (error) {
-      throw new Error(error)
+      throw error
     }
   }
 
@@ -60,16 +60,16 @@ class Users {
     try {
       return this.users[this.getUserIndex(username)]
     } catch (error) {
-      throw new Error(error)
+      throw error
     }
   }
 
   async addUser (newUserObejct) {
     try {
-      if (!this.users) throw new Error('ejecutar load()')
+      if (!this.users) throw new Error('array de usuarios undefined, ejecutar load()')
 
       const { username, password } = newUserObejct
-      if (!newUserObejct || !username || !password) throw new Error('Objeto debe ser de la forma {username, password}')
+      if (!newUserObejct || !username || !password) throw new Error(`Objeto debe ser de la forma {username, password}. Objecto recibido: ${JSON.stringify(newUserObejct)}`)
 
       newUserObejct.username = newUserObejct.username.replace(/\s+/g, '')
       newUserObejct.password = await hashPassword(newUserObejct.password, SALT)
@@ -78,7 +78,7 @@ class Users {
 
       await this.updateUserFile()
     } catch (error) {
-      throw new Error(error)
+      throw error
     }
   }
 
@@ -99,7 +99,7 @@ class Users {
       await this.updateUserFile()
     } catch (error) {
       console.error(error)
-      throw new Error(error)
+      throw error
     }
   }
 }

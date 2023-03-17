@@ -1,12 +1,14 @@
 require('dotenv').config()
 const { PORT } = require('./config')
+
 const express = require('express')
 const cors = require('cors')
 const helmet = require('helmet')
 const methodOverride = require('method-override')
 const cookieParser = require('cookie-parser')
-const authMiddelware = require('./middlewares/auth')
+const morgan = require('morgan')
 
+const authMiddelware = require('./middlewares/auth')
 const { adminRouter, loginRouter, logoutRouter, mailRouter, mainRouter, pdfsRouter, reportRouter, usersRouter } = require('./routes/index')
 
 const app = express()
@@ -21,6 +23,7 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
+app.use(morgan('combined'))
 app.all('*', authMiddelware)
 
 // Routes
@@ -34,5 +37,5 @@ app.use('/pdfs', pdfsRouter)
 app.use('/mail', mailRouter)
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`)
+  console.log(`report-pdf listening on port ${PORT}`)
 })

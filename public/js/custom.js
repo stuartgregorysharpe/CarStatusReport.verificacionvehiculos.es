@@ -118,7 +118,16 @@ document.getElementById('generar').addEventListener('click', (e) => {
   document.getElementById('danios-img').value = daniosCanvas.toDataURL({ format: 'jpeg' })
 
   // guardar firma
-  document.getElementById('firma-input').value = signaturePad.toDataURL('image/svg+xml')
+  const firmaBase64 = signaturePad.toDataURL('image/svg+xml').split(',')[1]
+  const firmaSVG = atob(firmaBase64)
+  const contenedorInvisible = document.getElementById('firma-contenedor-invisible')
+  contenedorInvisible.innerHTML = firmaSVG
+  const firmaSVGEl = contenedorInvisible.firstChild
+
+  const bbox = firmaSVGEl.getBBox()
+  firmaSVGEl.setAttribute("viewBox", `${bbox.x - 10} ${bbox.y - 10} ${bbox.width + 20} ${bbox.height + 20}`)
+
+  document.getElementById('firma-input').value = firmaSVGEl.outerHTML
 
   document.getElementById('form-principal').submit()
 })
