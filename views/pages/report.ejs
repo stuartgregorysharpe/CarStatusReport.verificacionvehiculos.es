@@ -411,15 +411,22 @@
           <% if (fileType === 'image') { %>
             <div class="col-3 image mb-3">
               <a href="/archivos/<%- data['files'][key]["filename"] %>" target="_blank">
-                <img src="/archivos/<%- data['files'][key]["filename"] %>" alt="" class="w-100">
+                <img src="/archivos/small-<%- data['files'][key]["filename"] %>" alt="" class="w-100">
               </a>
             </div>
           <% } else if (fileType === 'video') { %>
+          
+
+            <% let posterFilename = data['files'][key]["filename"].split('.'); %>
+            <% posterFilename[0] = `${posterFilename[0]}_1`; %>
+            <% posterFilename.splice(1, 1); %>
+            <% posterFilename = posterFilename.join('.'); %>
+            <% posterFilename = `/archivos/poster-${posterFilename}.jpg`; %>
+
             <div class="col-3 video mb-3">
               <a href="/archivos/<%- data['files'][key]["filename"] %>" target="_blank">
-                <video class="w-100" preload="auto">
-                  <source src="/archivos/<%- data['files'][key]["filename"] %>#t=0.5" type="<%- data['files'][key]["mimetype"] %>">
-                </video>
+                <!-- <img src="<%- posterFilename %>" alt="" class="w-100"> -->
+                <video class="w-100" src="/archivos/<%- data['files'][key]["filename"] %></video>"></video>
               </a>
             </div>
           <% } %>
