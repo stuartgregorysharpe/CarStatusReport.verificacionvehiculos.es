@@ -1,0 +1,4 @@
+/etc/crontab
+
+@daily root find /root/apps/pdf-report/archivos/* -mtime +29 -type f -delete
+@daily root find /root/apps/pdf-report/reportes/* -mtime +29 -type f -delete
