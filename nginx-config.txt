@@ -11,7 +11,7 @@ server {
   ssl_certificate /etc/ssl/certificate.crt;
   ssl_certificate_key /etc/ssl/private.key;
 
-  server_name 195.110.58.188;
+  server_name verificacionvehiculos.es www.verificacionvehiculos.es;
 
   location /reportes/ {
     alias /root/apps/pdf-report/reportes/;
