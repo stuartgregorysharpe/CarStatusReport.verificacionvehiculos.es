@@ -34,7 +34,7 @@ app.use('/login', loginRouter)
 app.use('/logout', logoutRouter)
 app.use('/users', usersRouter)
 app.use('/pdfs', pdfsRouter)
-app.use('/mail', mailRouter)
+// app.use('/mail', mailRouter)
 
 app.listen(PORT, () => {
   console.log(`report-pdf listening on port ${PORT}`)
