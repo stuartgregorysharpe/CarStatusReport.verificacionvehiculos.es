@@ -27,17 +27,17 @@
               </form>
               <h2 class="mt-4">Usuarios</h2>
               <hr>
-              <% data['usernames'].forEach(function(username){ %>
-                <div class="row mb-4" id="accordion-<%= username %>">
+              <% data['usernames'].forEach(function(username, i){ %>
+                <div class="row mb-4" id="accordion-<%= i %>">
                   <div class="col-md-6"><h4><%= username %></h4></div>
                   <div class="col-md-6 d-flex justify-content-lg-end">
-                    <button type="button" class="btn btn-sm btn-warning me-2" data-bs-toggle="collapse" data-bs-target="#modificar-<%= username %>" aria-expanded="true" aria-controls="modificar-<%= username %>">Cambiar contraseña</button>
+                    <button type="button" class="btn btn-sm btn-warning me-2" data-bs-toggle="collapse" data-bs-target="#modificar-<%= i %>" aria-expanded="true" aria-controls="modificar-<%= i %>">Cambiar contraseña</button>
                     <% if (username !== 'admin') { %>
-                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="collapse" data-bs-target="#eliminar-<%= username %>" aria-expanded="true" aria-controls="eliminar-<%= username %>">Eliminar usuario</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="collapse" data-bs-target="#eliminar-<%= i %>" aria-expanded="true" aria-controls="eliminar-<%= i %>">Eliminar usuario</button>
                     <% } %>
                   </div>
                   <div class="col-12">
-                    <div class="accordion-collapse collapse" aria-labelledby="modificar-<%= username %>" data-bs-parent="#accordion-<%= username %>" id="modificar-<%= username %>">
+                    <div class="accordion-collapse collapse" aria-labelledby="modificar-<%= i %>" data-bs-parent="#accordion-<%= i %>" id="modificar-<%= i %>">
                       <form method="POST" class="py-3" action="/users?_method=PUT">
                         <input type="hidden" name="username" value="<%= username %>">
                         <label for="password" class="form-label">Nueva contraseña</label>
@@ -48,7 +48,7 @@
                   </div>
                   <% if (username !== 'admin') { %>
                   <div class="col-12">
-                    <div class="accordion-collapse collapse" aria-labelledby="eliminar-<%= username %>" data-bs-parent="#accordion-<%= username %>" id="eliminar-<%= username %>">
+                    <div class="accordion-collapse collapse" aria-labelledby="eliminar-<%= i %>" data-bs-parent="#accordion-<%= i %>" id="eliminar-<%= i %>">
                       <form method="POST" class="py-3" action="/users?_method=DELETE">
                         <input type="hidden" name="username" value="<%= username %>">
                         <p><strong>Seguro que desea eliminar el usuario <em><%= username %></em>?</strong></p>
