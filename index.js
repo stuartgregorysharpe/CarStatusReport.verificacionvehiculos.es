@@ -1,41 +1,15 @@
 require('dotenv').config()
 const { PORT } = require('./config')
+const app = require('./server')
 
-const express = require('express')
-const cors = require('cors')
-const helmet = require('helmet')
-const methodOverride = require('method-override')
-const cookieParser = require('cookie-parser')
-const morgan = require('morgan')
+const mongoose = require('mongoose')
 
-const authMiddelware = require('./middlewares/auth')
-const { adminRouter, loginRouter, logoutRouter, mailRouter, mainRouter, pdfsRouter, reportRouter, usersRouter } = require('./routes/index')
-
-const app = express()
-
-app.use(express.static('public'))
-app.set('view engine', 'ejs')
-
-// Middlewares
-app.use(helmet())
-app.use(methodOverride('_method'))
-app.use(cors())
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
-app.use(cookieParser())
-app.use(morgan('combined'))
-app.all('*', authMiddelware)
-
-// Routes
-app.use('/', mainRouter)
-app.use('/report', reportRouter)
-app.use('/admin', adminRouter)
-app.use('/login', loginRouter)
-app.use('/logout', logoutRouter)
-app.use('/users', usersRouter)
-app.use('/pdfs', pdfsRouter)
-// app.use('/mail', mailRouter)
-
-app.listen(PORT, () => {
-  console.log(`report-pdf listening on port ${PORT}`)
-})
+mongoose
+  .connect('mongodb://127.0.0.1:27017/pdfReport')
+  .then(() => {
+    console.log('Connected to MongoDB')
+    app.listen(PORT, () => {
+      console.log(`report-pdf listening on port ${PORT}`)
+    })
+  })
+  .catch(error => console.log(error))

@@ -1,9 +1,9 @@
-const usuarios = require('../classes/Users')
+const Users = require('../models/Users')
 
 const mainGet = async (req, res, next) => {
   try {
-    await usuarios.load()
-    res.render('pages/admin', { data: { usernames: usuarios.getUsernames() } })
+    const users = await Users.find({}, '_id username isAdmin')
+    res.render('pages/admin', { data: { users } })
   } catch (error) {
     next(error)
   }

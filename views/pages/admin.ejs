@@ -27,31 +27,31 @@
               </form>
               <h2 class="mt-4">Usuarios</h2>
               <hr>
-              <% data['usernames'].forEach(function(username, i){ %>
+              <% data['users'].forEach(function(user, i){ %>
                 <div class="row mb-4" id="accordion-<%= i %>">
-                  <div class="col-md-6"><h4><%= username %></h4></div>
+                  <div class="col-md-6"><h4><%= user.username %></h4></div>
                   <div class="col-md-6 d-flex justify-content-lg-end">
                     <button type="button" class="btn btn-sm btn-warning me-2" data-bs-toggle="collapse" data-bs-target="#modificar-<%= i %>" aria-expanded="true" aria-controls="modificar-<%= i %>">Cambiar contraseña</button>
-                    <% if (username !== 'admin') { %>
+                    <% if (!user.isAdmin) { %>
                     <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="collapse" data-bs-target="#eliminar-<%= i %>" aria-expanded="true" aria-controls="eliminar-<%= i %>">Eliminar usuario</button>
                     <% } %>
                   </div>
                   <div class="col-12">
                     <div class="accordion-collapse collapse" aria-labelledby="modificar-<%= i %>" data-bs-parent="#accordion-<%= i %>" id="modificar-<%= i %>">
                       <form method="POST" class="py-3" action="/users?_method=PUT">
-                        <input type="hidden" name="username" value="<%= username %>">
+                        <input type="hidden" name="_id" value="<%= user._id %>">
                         <label for="password" class="form-label">Nueva contraseña</label>
                         <input type="text" class="form-control mb-3" id="password" name="password" required>
                         <button type="submit" class="btn btn-primary">Cambiar contraseña</button>
                       </form>
                     </div>
                   </div>
-                  <% if (username !== 'admin') { %>
+                  <% if (!user.isAdmin) { %>
                   <div class="col-12">
                     <div class="accordion-collapse collapse" aria-labelledby="eliminar-<%= i %>" data-bs-parent="#accordion-<%= i %>" id="eliminar-<%= i %>">
                       <form method="POST" class="py-3" action="/users?_method=DELETE">
-                        <input type="hidden" name="username" value="<%= username %>">
-                        <p><strong>Seguro que desea eliminar el usuario <em><%= username %></em>?</strong></p>
+                        <input type="hidden" name="_id" value="<%= user._id %>">
+                        <p><strong>Seguro que desea eliminar el usuario <em><%= user.username %></em>?</strong></p>
                         <button type="submit" class="btn btn-danger">ELIMINAR USUARIO</button>
                       </form>
                     </div>

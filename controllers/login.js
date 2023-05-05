@@ -1,6 +1,6 @@
 const { SALT } = require('../config')
 const jwt = require('jsonwebtoken')
-const usuarios = require('../classes/Users')
+const Users = require('../models/Users')
 const hashPassword = require('../helpers/hashPassword')
 
 const loginGet = (req, res) => {
@@ -9,8 +9,7 @@ const loginGet = (req, res) => {
 
 const loginPost = async (req, res, next) => {
   try {
-    await usuarios.load()
-    let { password, isAdmin } = usuarios.getUserObject(req.body.username)
+    let { password, isAdmin } = await Users.findOne({ username: req.body.username }, 'password isAdmin').exec()
     if (!isAdmin) { isAdmin = false }
     const hashedPassword = await hashPassword(req.body.password, SALT)
 
