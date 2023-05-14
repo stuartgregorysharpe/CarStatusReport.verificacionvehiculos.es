@@ -6,9 +6,14 @@ const cookieParser = require('cookie-parser')
 const morgan = require('morgan')
 
 const authMiddelware = require('./middlewares/auth')
-const { adminRouter, loginRouter, logoutRouter, mainRouter, pdfsRouter, reportRouter, usersRouter } = require('./routes/index')
+const { adminRouter, loginRouter, logoutRouter, mainRouter, pdfsRouter, reportRouter, usersRouter, reportListRouter } = require('./routes/index')
 
 const app = express()
+
+if (process.env.ENVIRONMENT === 'development') {
+  app.use('/archivos', express.static('archivos'))
+  app.use('/reportes', express.static('reportes'))
+}
 
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
@@ -31,6 +36,7 @@ app.use('/login', loginRouter)
 app.use('/logout', logoutRouter)
 app.use('/users', usersRouter)
 app.use('/pdfs', pdfsRouter)
+app.use('/lista-reportes', reportListRouter)
 // app.use('/mail', mailRouter)
 
 module.exports = app

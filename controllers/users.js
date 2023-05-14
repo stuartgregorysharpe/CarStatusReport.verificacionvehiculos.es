@@ -1,4 +1,3 @@
-const usuarios = require('../classes/Users')
 const Users = require('../models/Users')
 const hashPassword = require('../helpers/hashPassword')
 const { SALT } = require('../config')
@@ -11,11 +10,11 @@ const usersPost = async (req, res, next) => {
     password = await hashPassword(password, SALT)
 
     await Users.create({ username, password, isAdmin })
-    
+
     res.redirect('/admin')
   } catch (error) {
     next(error)
-  } 
+  }
 }
 
 const usersDelete = async (req, res, next) => {
@@ -30,7 +29,7 @@ const usersDelete = async (req, res, next) => {
 const usersPut = async (req, res, next) => {
   try {
     let { _id, password } = req.body
-    
+
     password = await hashPassword(password, SALT)
 
     await Users.findByIdAndUpdate(_id, { password })

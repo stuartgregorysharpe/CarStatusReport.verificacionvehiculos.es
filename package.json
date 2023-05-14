@@ -41,6 +41,7 @@
   },
   "standard": {
     "ignore": [
+      "*",
       "/public/js/*"
     ]
   }

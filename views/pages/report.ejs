@@ -113,15 +113,15 @@
     .neumatico.trasero {
       right: 22%;
     }
-    .neumatico.verde {
+    .neumatico.Verde {
       background-color: var(--verde);
       color: var(--verde);
     }
-    .neumatico.rojo {
+    .neumatico.Rojo {
       background-color: var(--rojo);
       color: var(--rojo);
     }
-    .neumatico.amarillo {
+    .neumatico.Amarillo {
       background-color: var(--amarillo);
       color: var(--amarillo);
     }
@@ -409,8 +409,8 @@
 
           <% if (fileType === 'image') { %>
             <div class="col-3 image mb-3">
-              <a href="/archivos/<%- data['files'][key]["filename"] %>" target="_blank">
-                <img src="/archivos/small-<%- data['files'][key]["filename"] %>" alt="" class="w-100">
+              <a href="/reportes/<%- data['reportId'] %>/<%- data['files'][key]["filename"] %>" target="_blank">
+                <img src="/reportes/<%- data['reportId'] %>/small-<%- data['files'][key]["filename"] %>" alt="" class="w-100">
               </a>
             </div>
           <% } else if (fileType === 'video') { %>
@@ -423,9 +423,9 @@
             <% posterFilename = `/archivos/poster-${posterFilename}.jpg`; %>
 
             <div class="col-3 video mb-3">
-              <a href="/archivos/<%- data['files'][key]["filename"] %>" target="_blank">
+              <a href="/reportes/<%- data['reportId'] %>/<%- data['files'][key]["filename"] %>" target="_blank">
                 <!-- <img src="<%- posterFilename %>" alt="" class="w-100"> -->
-                <video class="w-100" src="/archivos/<%- data['files'][key]["filename"] %></video>"></video>
+                <video class="w-100" src="/reportes/<%- data['reportId'] %>/<%- data['files'][key]["filename"] %></video>"></video>
               </a>
             </div>
           <% } %>
@@ -460,9 +460,9 @@
             <div class="col-4"><p class="text-capitalize">interior</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['interior'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['interior'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['interior'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['interior'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['interior'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['interior'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['interior-comentario'] %></div>
@@ -473,9 +473,9 @@
             <div class="col-4"><p class="text-capitalize">hora y fecha</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['hora-y-fecha'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['hora-y-fecha'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['hora-y-fecha'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['hora-y-fecha'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['hora-y-fecha'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['hora-y-fecha'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['hora-y-fecha-comentario'] %></div>
@@ -486,9 +486,9 @@
             <div class="col-4"><p class="text-capitalize">luces interior</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['luces-interior'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['luces-interior'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['luces-interior'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['luces-interior'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['luces-interior'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['luces-interior'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['luces-interior-comentario'] %></div>
@@ -499,9 +499,9 @@
             <div class="col-4"><p class="text-capitalize">testigos avería</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['testigos-averia'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['testigos-averia'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['testigos-averia'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['testigos-averia'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['testigos-averia'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['testigos-averia'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['testigos-averia-comentario'] %></div>
@@ -512,9 +512,9 @@
             <div class="col-4"><p class="text-capitalize">climatización</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['climatizacion'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['climatizacion'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['climatizacion'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['climatizacion'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['climatizacion'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['climatizacion'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['climatizacion-comentario'] %></div>
@@ -525,9 +525,9 @@
             <div class="col-4"><p class="text-capitalize">estado elevalunas d/d</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-elevalunas-d-d'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-elevalunas-d-d'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-elevalunas-d-d'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-elevalunas-d-d'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-elevalunas-d-d'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-elevalunas-d-d'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-elevalunas-d-d-comentario'] %></div>
@@ -538,9 +538,9 @@
             <div class="col-4"><p class="text-capitalize">estado elevalunas d/izq</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-elevalunas-d-izq'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-elevalunas-d-izq'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-elevalunas-d-izq'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-elevalunas-d-izq'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-elevalunas-d-izq'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-elevalunas-d-izq'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-elevalunas-d-izq-comentario'] %></div>
@@ -551,9 +551,9 @@
             <div class="col-4"><p class="text-capitalize">estado elevalunas t/d</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-elevalunas-t-d'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-elevalunas-t-d'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-elevalunas-t-d'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-elevalunas-t-d'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-elevalunas-t-d'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-elevalunas-t-d'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-elevalunas-t-d-comentario'] %></div>
@@ -564,9 +564,9 @@
             <div class="col-4"><p class="text-capitalize">estado elevalunas trasero izquierdo</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-elevalunas-trasero-izquierdo'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-elevalunas-trasero-izquierdo'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-elevalunas-trasero-izquierdo'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-elevalunas-trasero-izquierdo'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-elevalunas-trasero-izquierdo'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-elevalunas-trasero-izquierdo'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-elevalunas-trasero-izquierdo-comentario'] %></div>
@@ -577,9 +577,9 @@
             <div class="col-4"><p class="text-capitalize">radio</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['radio'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['radio'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['radio'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['radio'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['radio'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['radio'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['radio-comentario'] %></div>
@@ -590,9 +590,9 @@
             <div class="col-4"><p class="text-capitalize">estado cerraduras</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-cerraduras'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-cerraduras'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-cerraduras'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-cerraduras'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-cerraduras'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-cerraduras'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-cerraduras-comentario'] %></div>
@@ -603,9 +603,9 @@
             <div class="col-4"><p class="text-capitalize">estado cinturones seguridad</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-cinturones-seguridad'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-cinturones-seguridad'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-cinturones-seguridad'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-cinturones-seguridad'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-cinturones-seguridad'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-cinturones-seguridad'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-cinturones-seguridad-comentario'] %></div>
@@ -616,9 +616,9 @@
             <div class="col-4"><p class="text-capitalize">guarnecidos</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['guarnecidos'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['guarnecidos'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['guarnecidos'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['guarnecidos'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['guarnecidos'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['guarnecidos'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['guarnecidos-comentario'] %></div>
@@ -629,9 +629,9 @@
             <div class="col-4"><p class="text-capitalize">parasol y retrovisor interior</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['parasol-y-retrovisor-interior'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['parasol-y-retrovisor-interior'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['parasol-y-retrovisor-interior'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['parasol-y-retrovisor-interior'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['parasol-y-retrovisor-interior'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['parasol-y-retrovisor-interior'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['parasol-y-retrovisor-interior-comentario'] %></div>
@@ -642,9 +642,9 @@
             <div class="col-4"><p class="text-capitalize">botoneras</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['botoneras'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['botoneras'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['botoneras'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['botoneras'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['botoneras'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['botoneras'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['botoneras-comentario'] %></div>
@@ -655,9 +655,9 @@
             <div class="col-4"><p class="text-capitalize">cenicero central</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['cenicero-central'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['cenicero-central'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['cenicero-central'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['cenicero-central'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['cenicero-central'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['cenicero-central'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['cenicero-central-comentario'] %></div>
@@ -668,9 +668,9 @@
             <div class="col-4"><p class="text-capitalize">encendedor</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['encendedor'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['encendedor'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['encendedor'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['encendedor'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['encendedor'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['encendedor'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['encendedor-comentario'] %></div>
@@ -681,9 +681,9 @@
             <div class="col-4"><p class="text-capitalize">velocímetro</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['velocimetro'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['velocimetro'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['velocimetro'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['velocimetro'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['velocimetro'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['velocimetro'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['velocimetro-comentario'] %></div>
@@ -694,9 +694,9 @@
             <div class="col-4"><p class="text-capitalize">cuentarrevoluciones</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['cuentarrevoluciones'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['cuentarrevoluciones'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['cuentarrevoluciones'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['cuentarrevoluciones'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['cuentarrevoluciones'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['cuentarrevoluciones'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['cuentarrevoluciones-comentario'] %></div>
@@ -707,9 +707,9 @@
             <div class="col-4"><p class="text-capitalize">cierre centralizado</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['cierre-centralizado'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['cierre-centralizado'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['cierre-centralizado'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['cierre-centralizado'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['cierre-centralizado'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['cierre-centralizado'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['cierre-centralizado-comentario'] %></div>
@@ -720,9 +720,9 @@
             <div class="col-4"><p class="text-capitalize">asientos y tapizados</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['asientos-y-tapizados'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['asientos-y-tapizados'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['asientos-y-tapizados'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['asientos-y-tapizados'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['asientos-y-tapizados'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['asientos-y-tapizados'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['asientos-y-tapizados-comentario'] %></div>
@@ -733,9 +733,9 @@
             <div class="col-4"><p class="text-capitalize">retrovisor interior</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['retrovisor-interior'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['retrovisor-interior'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['retrovisor-interior'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['retrovisor-interior'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['retrovisor-interior'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['retrovisor-interior'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['retrovisor-interior-comentario'] %></div>
@@ -746,9 +746,9 @@
             <div class="col-4"><p class="text-capitalize">claxon</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['claxon'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['claxon'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['claxon'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['claxon'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['claxon'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['claxon'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['claxon-comentario'] %></div>
@@ -759,9 +759,9 @@
             <div class="col-4"><p class="text-capitalize">calefacción</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['calefaccion'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['calefaccion'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['calefaccion'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['calefaccion'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['calefaccion'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['calefaccion'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['calefaccion-comentario'] %></div>
@@ -772,9 +772,9 @@
             <div class="col-4"><p class="text-capitalize">aire acondicionado</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['aire-acondicionado'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['aire-acondicionado'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['aire-acondicionado'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['aire-acondicionado'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['aire-acondicionado'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['aire-acondicionado'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['aire-acondicionado-comentario'] %></div>
@@ -785,9 +785,9 @@
             <div class="col-4"><p class="text-capitalize">gps</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['gps'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['gps'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['gps'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['gps'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['gps'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['gps'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['gps-comentario'] %></div>
@@ -802,9 +802,9 @@
             <div class="col-4"><p class="text-capitalize">diagnosis general</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['diagnosis-general'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['diagnosis-general'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['diagnosis-general'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['diagnosis-general'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['diagnosis-general'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['diagnosis-general'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['diagnosis-general-comentario'] %></div>
@@ -819,9 +819,9 @@
             <div class="col-4"><p class="text-capitalize">daños carrocería</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['danios-carroceria'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['danios-carroceria'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['danios-carroceria'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['danios-carroceria'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['danios-carroceria'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['danios-carroceria'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['danios-carroceria-comentario'] %></div>
@@ -832,9 +832,9 @@
             <div class="col-4"><p class="text-capitalize">luz posición</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['luz-posicion-delantera'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['luz-posicion-delantera'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['luz-posicion-delantera'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['luz-posicion-delantera'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['luz-posicion-delantera'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['luz-posicion-delantera'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['luz-posicion-delantera-comentario'] %></div>
@@ -845,9 +845,9 @@
             <div class="col-4"><p class="text-capitalize">luz corta</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['luz-corta'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['luz-corta'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['luz-corta'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['luz-corta'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['luz-corta'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['luz-corta'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['luz-corta-comentario'] %></div>
@@ -858,9 +858,9 @@
             <div class="col-4"><p class="text-capitalize">luz larga</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['luz-larga'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['luz-larga'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['luz-larga'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['luz-larga'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['luz-larga'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['luz-larga'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['luz-larga-comentario'] %></div>
@@ -871,9 +871,9 @@
             <div class="col-4"><p class="text-capitalize">luz intermitentes</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['luz-intermitentes-delantera'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['luz-intermitentes-delantera'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['luz-intermitentes-delantera'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['luz-intermitentes-delantera'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['luz-intermitentes-delantera'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['luz-intermitentes-delantera'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['luz-intermitentes-delantera-comentario'] %></div>
@@ -884,9 +884,9 @@
             <div class="col-4"><p class="text-capitalize">luz nieblas</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['luz-nieblas'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['luz-nieblas'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['luz-nieblas'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['luz-nieblas'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['luz-nieblas'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['luz-nieblas'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['luz-nieblas-comentario'] %></div>
@@ -897,9 +897,9 @@
             <div class="col-4"><p class="text-capitalize">sistema lavado faros</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['sistema-lavado-faros'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['sistema-lavado-faros'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['sistema-lavado-faros'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['sistema-lavado-faros'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['sistema-lavado-faros'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['sistema-lavado-faros'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['sistema-lavado-faros-comentario'] %></div>
@@ -910,9 +910,9 @@
             <div class="col-4"><p class="text-capitalize">limpiaparabrisas delanteros</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['limpiaparabrisas-delanteros'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['limpiaparabrisas-delanteros'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['limpiaparabrisas-delanteros'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['limpiaparabrisas-delanteros'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['limpiaparabrisas-delanteros'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['limpiaparabrisas-delanteros'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['limpiaparabrisas-delanteros-comentario'] %></div>
@@ -927,9 +927,9 @@
             <div class="col-4"><p class="text-capitalize">daños exterior trasero</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['danios-exterior-trasero'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['danios-exterior-trasero'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['danios-exterior-trasero'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['danios-exterior-trasero'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['danios-exterior-trasero'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['danios-exterior-trasero'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['danios-exterior-trasero-comentario'] %></div>
@@ -940,9 +940,9 @@
             <div class="col-4"><p class="text-capitalize">luz freno</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['luz-freno'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['luz-freno'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['luz-freno'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['luz-freno'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['luz-freno'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['luz-freno'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['luz-freno-comentario'] %></div>
@@ -953,9 +953,9 @@
             <div class="col-4"><p class="text-capitalize">luz intermitentes</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['luz-intermitentes-trasera'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['luz-intermitentes-trasera'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['luz-intermitentes-trasera'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['luz-intermitentes-trasera'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['luz-intermitentes-trasera'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['luz-intermitentes-trasera'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['luz-intermitentes-trasera-comentario'] %></div>
@@ -966,9 +966,9 @@
             <div class="col-4"><p class="text-capitalize">luz posicion</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['luz-posicion-trasera'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['luz-posicion-trasera'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['luz-posicion-trasera'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['luz-posicion-trasera'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['luz-posicion-trasera'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['luz-posicion-trasera'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['luz-posicion-trasera-comentario'] %></div>
@@ -979,9 +979,9 @@
             <div class="col-4"><p class="text-capitalize">luz marcha atrás</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['luz-marcha-atras'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['luz-marcha-atras'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['luz-marcha-atras'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['luz-marcha-atras'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['luz-marcha-atras'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['luz-marcha-atras'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['luz-marcha-atras-comentario'] %></div>
@@ -992,9 +992,9 @@
             <div class="col-4"><p class="text-capitalize">luz niebla trasero</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['luz-niebla-trasero'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['luz-niebla-trasero'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['luz-niebla-trasero'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['luz-niebla-trasero'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['luz-niebla-trasero'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['luz-niebla-trasero'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['luz-niebla-trasero-comentario'] %></div>
@@ -1005,9 +1005,9 @@
             <div class="col-4"><p class="text-capitalize">limpias parabrisas trasero</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['limpias-parabrisas-trasero'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['limpias-parabrisas-trasero'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['limpias-parabrisas-trasero'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['limpias-parabrisas-trasero'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['limpias-parabrisas-trasero'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['limpias-parabrisas-trasero'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['limpias-parabrisas-trasero-comentario'] %></div>
@@ -1022,9 +1022,9 @@
             <div class="col-4"><p class="text-capitalize">estado carroceria</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-carroceria-derecho'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-carroceria-derecho'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-carroceria-derecho'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-carroceria-derecho'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-carroceria-derecho'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-carroceria-derecho'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-carroceria-derecho-comentario'] %></div>
@@ -1035,9 +1035,9 @@
             <div class="col-4"><p class="text-capitalize">retrovisor derecho</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['retrovisor-derecho'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['retrovisor-derecho'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['retrovisor-derecho'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['retrovisor-derecho'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['retrovisor-derecho'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['retrovisor-derecho'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['retrovisor-derecho-comentario'] %></div>
@@ -1048,9 +1048,9 @@
             <div class="col-4"><p class="text-capitalize">intermitentes derechos</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['intermitentes-derechos'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['intermitentes-derechos'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['intermitentes-derechos'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['intermitentes-derechos'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['intermitentes-derechos'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['intermitentes-derechos'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['intermitentes-derechos-comentario'] %></div>
@@ -1065,9 +1065,9 @@
             <div class="col-4"><p class="text-capitalize">estado carroceria</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-carroceria-izquierdo'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-carroceria-izquierdo'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-carroceria-izquierdo'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-carroceria-izquierdo'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-carroceria-izquierdo'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-carroceria-izquierdo'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-carroceria-izquierdo-comentario'] %></div>
@@ -1078,9 +1078,9 @@
             <div class="col-4"><p class="text-capitalize">retrovisor izq</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['retrovisor-izq'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['retrovisor-izq'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['retrovisor-izq'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['retrovisor-izq'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['retrovisor-izq'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['retrovisor-izq'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['retrovisor-izq-comentario'] %></div>
@@ -1091,9 +1091,9 @@
             <div class="col-4"><p class="text-capitalize">intermitente izq</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['intermitente-izq'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['intermitente-izq'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['intermitente-izq'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['intermitente-izq'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['intermitente-izq'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['intermitente-izq'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['intermitente-izq-comentario'] %></div>
@@ -1108,9 +1108,9 @@
             <div class="col-4"><p class="text-capitalize">estado visual</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-visual'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-visual'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-visual'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-visual'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-visual'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-visual'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-visual-comentario'] %></div>
@@ -1121,9 +1121,9 @@
             <div class="col-4"><p class="text-capitalize">nivel liquido limpiaparabrisas</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['nivel-liquido-limpiaparabrisas'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['nivel-liquido-limpiaparabrisas'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['nivel-liquido-limpiaparabrisas'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['nivel-liquido-limpiaparabrisas'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['nivel-liquido-limpiaparabrisas'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['nivel-liquido-limpiaparabrisas'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['nivel-liquido-limpiaparabrisas-comentario'] %></div>
@@ -1134,9 +1134,9 @@
             <div class="col-4"><p class="text-capitalize">estado plásticos/protectores</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-plasticos-protectores'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-plasticos-protectores'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-plasticos-protectores'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-plasticos-protectores'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-plasticos-protectores'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-plasticos-protectores'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-plasticos-protectores-comentario'] %></div>
@@ -1147,9 +1147,9 @@
             <div class="col-4"><p class="text-capitalize">nivel liquido anticongelante</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['nivel-liquido-anticongelante'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['nivel-liquido-anticongelante'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['nivel-liquido-anticongelante'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['nivel-liquido-anticongelante'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['nivel-liquido-anticongelante'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['nivel-liquido-anticongelante'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['nivel-liquido-anticongelante-comentario'] %></div>
@@ -1160,9 +1160,9 @@
             <div class="col-4"><p class="text-capitalize">estado soportes de motor</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-soportes-de-motor'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-soportes-de-motor'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-soportes-de-motor'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-soportes-de-motor'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-soportes-de-motor'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-soportes-de-motor'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-soportes-de-motor-comentario'] %></div>
@@ -1177,9 +1177,9 @@
             <div class="col-4"><p class="text-capitalize">nivel aceite</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['nivel-aceite'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['nivel-aceite'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['nivel-aceite'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['nivel-aceite'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['nivel-aceite'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['nivel-aceite'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['nivel-aceite-comentario'] %></div>
@@ -1190,9 +1190,9 @@
             <div class="col-4"><p class="text-capitalize">sistemas eléctricos</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['sistemas-electricos'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['sistemas-electricos'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['sistemas-electricos'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['sistemas-electricos'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['sistemas-electricos'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['sistemas-electricos'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['sistemas-electricos-comentario'] %></div>
@@ -1203,9 +1203,9 @@
             <div class="col-4"><p class="text-capitalize">sistema correa auxiliar</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['sistema-correa-auxiliar'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['sistema-correa-auxiliar'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['sistema-correa-auxiliar'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['sistema-correa-auxiliar'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['sistema-correa-auxiliar'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['sistema-correa-auxiliar'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['sistema-correa-auxiliar-comentario'] %></div>
@@ -1216,9 +1216,9 @@
             <div class="col-4"><p class="text-capitalize">sistema de distribución</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['sistema-de-distribucion'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['sistema-de-distribucion'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['sistema-de-distribucion'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['sistema-de-distribucion'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['sistema-de-distribucion'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['sistema-de-distribucion'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['sistema-de-distribucion-comentario'] %></div>
@@ -1229,9 +1229,9 @@
             <div class="col-4"><p class="text-capitalize">sistema escape</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['sistema-escape'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['sistema-escape'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['sistema-escape'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['sistema-escape'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['sistema-escape'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['sistema-escape'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['sistema-escape-comentario'] %></div>
@@ -1242,9 +1242,9 @@
             <div class="col-4"><p class="text-capitalize">pérdidas de aceite</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['perdidas-de-aceite-motor'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['perdidas-de-aceite-motor'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['perdidas-de-aceite-motor'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['perdidas-de-aceite-motor'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['perdidas-de-aceite-motor'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['perdidas-de-aceite-motor'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['perdidas-de-aceite-motor-comentario'] %></div>
@@ -1255,9 +1255,9 @@
             <div class="col-4"><p class="text-capitalize">pérdidas refrigerante</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['perdidas-refrigerante'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['perdidas-refrigerante'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['perdidas-refrigerante'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['perdidas-refrigerante'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['perdidas-refrigerante'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['perdidas-refrigerante'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['perdidas-refrigerante-comentario'] %></div>
@@ -1268,9 +1268,9 @@
             <div class="col-4"><p class="text-capitalize">pérdidas combustible</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['perdidas-combustible'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['perdidas-combustible'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['perdidas-combustible'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['perdidas-combustible'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['perdidas-combustible'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['perdidas-combustible'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['perdidas-combustible-comentario'] %></div>
@@ -1281,9 +1281,9 @@
             <div class="col-4"><p class="text-capitalize">pérdidas adblue</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['perdidas-adblue'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['perdidas-adblue'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['perdidas-adblue'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['perdidas-adblue'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['perdidas-adblue'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['perdidas-adblue'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['perdidas-adblue-comentario'] %></div>
@@ -1294,9 +1294,9 @@
             <div class="col-4"><p class="text-capitalize">ralentí correcto</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['ralenti-correcto'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['ralenti-correcto'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['ralenti-correcto'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['ralenti-correcto'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['ralenti-correcto'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['ralenti-correcto'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['ralenti-correcto-comentario'] %></div>
@@ -1307,9 +1307,9 @@
             <div class="col-4"><p class="text-capitalize">ruidos de motor</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['ruidos-de-motor'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['ruidos-de-motor'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['ruidos-de-motor'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['ruidos-de-motor'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['ruidos-de-motor'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['ruidos-de-motor'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['ruidos-de-motor-comentario'] %></div>
@@ -1320,9 +1320,9 @@
             <div class="col-4"><p class="text-capitalize">vibraciones</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['vibraciones'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['vibraciones'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['vibraciones'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['vibraciones'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['vibraciones'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['vibraciones'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['vibraciones-comentario'] %></div>
@@ -1333,9 +1333,9 @@
             <div class="col-4"><p class="text-capitalize">humos</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['humos'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['humos'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['humos'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['humos'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['humos'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['humos'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['humos-comentario'] %></div>
@@ -1350,9 +1350,9 @@
             <div class="col-4"><p class="text-capitalize">temperatura del motor</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['temperatura-del-motor'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['temperatura-del-motor'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['temperatura-del-motor'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['temperatura-del-motor'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['temperatura-del-motor'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['temperatura-del-motor'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['temperatura-del-motor-comentario'] %></div>
@@ -1363,9 +1363,9 @@
             <div class="col-4"><p class="text-capitalize">nivel y estado refrigerante</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['nivel-y-estado-refrigerante'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['nivel-y-estado-refrigerante'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['nivel-y-estado-refrigerante'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['nivel-y-estado-refrigerante'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['nivel-y-estado-refrigerante'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['nivel-y-estado-refrigerante'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['nivel-y-estado-refrigerante-comentario'] %></div>
@@ -1376,9 +1376,9 @@
             <div class="col-4"><p class="text-capitalize">estado de radiadores</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-de-radiadores'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-de-radiadores'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-de-radiadores'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-de-radiadores'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-de-radiadores'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-de-radiadores'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-de-radiadores-comentario'] %></div>
@@ -1389,9 +1389,9 @@
             <div class="col-4"><p class="text-capitalize">estado electroventiladores</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-electroventiladores'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-electroventiladores'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-electroventiladores'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-electroventiladores'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-electroventiladores'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-electroventiladores'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-electroventiladores-comentario'] %></div>
@@ -1406,9 +1406,9 @@
             <div class="col-4"><p class="text-capitalize">funcionamiento embrague sistema hidráulico</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['funcionamiento-embrague-sistema-hidraulico'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['funcionamiento-embrague-sistema-hidraulico'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['funcionamiento-embrague-sistema-hidraulico'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['funcionamiento-embrague-sistema-hidraulico'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['funcionamiento-embrague-sistema-hidraulico'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['funcionamiento-embrague-sistema-hidraulico'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['funcionamiento-embrague-sistema-hidraulico-comentario'] %></div>
@@ -1423,9 +1423,9 @@
             <div class="col-4"><p class="text-capitalize">funcionamiento sistema manual</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['funcionamiento-sistema-manual'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['funcionamiento-sistema-manual'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['funcionamiento-sistema-manual'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['funcionamiento-sistema-manual'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['funcionamiento-sistema-manual'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['funcionamiento-sistema-manual'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['funcionamiento-sistema-manual-comentario'] %></div>
@@ -1436,9 +1436,9 @@
             <div class="col-4"><p class="text-capitalize">funcionamiento sistema automático</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['funcionamiento-sistema-automatico'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['funcionamiento-sistema-automatico'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['funcionamiento-sistema-automatico'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['funcionamiento-sistema-automatico'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['funcionamiento-sistema-automatico'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['funcionamiento-sistema-automatico'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['funcionamiento-sistema-automatico-comentario'] %></div>
@@ -1449,9 +1449,9 @@
             <div class="col-4"><p class="text-capitalize">sistema palanquearía</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['sistema-palanquearia'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['sistema-palanquearia'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['sistema-palanquearia'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['sistema-palanquearia'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['sistema-palanquearia'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['sistema-palanquearia'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['sistema-palanquearia-comentario'] %></div>
@@ -1466,9 +1466,9 @@
             <div class="col-4"><p class="text-capitalize">estado amortiguador d/derecho</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-amortiguador-d-derecho'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-amortiguador-d-derecho'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-amortiguador-d-derecho'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-amortiguador-d-derecho'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-amortiguador-d-derecho'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-amortiguador-d-derecho'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-amortiguador-d-derecho-comentario'] %></div>
@@ -1479,9 +1479,9 @@
             <div class="col-4"><p class="text-capitalize">estado amortiguador d/izq</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-amortiguador-d-izq'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-amortiguador-d-izq'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-amortiguador-d-izq'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-amortiguador-d-izq'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-amortiguador-d-izq'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-amortiguador-d-izq'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-amortiguador-d-izq-comentario'] %></div>
@@ -1492,9 +1492,9 @@
             <div class="col-4"><p class="text-capitalize">estado amortiguador tra/derecho</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-amortiguador-tra-derecho'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-amortiguador-tra-derecho'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-amortiguador-tra-derecho'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-amortiguador-tra-derecho'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-amortiguador-tra-derecho'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-amortiguador-tra-derecho'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-amortiguador-tra-derecho-comentario'] %></div>
@@ -1505,9 +1505,9 @@
             <div class="col-4"><p class="text-capitalize">estado amortiguador tra/izq</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-amortiguador-tra-izq'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-amortiguador-tra-izq'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-amortiguador-tra-izq'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-amortiguador-tra-izq'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-amortiguador-tra-izq'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-amortiguador-tra-izq'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-amortiguador-tra-izq-comentario'] %></div>
@@ -1522,9 +1522,9 @@
             <div class="col-4"><p class="text-capitalize">discos delanteros</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['discos-delanteros'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['discos-delanteros'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['discos-delanteros'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['discos-delanteros'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['discos-delanteros'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['discos-delanteros'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['discos-delanteros-comentario'] %></div>
@@ -1535,9 +1535,9 @@
             <div class="col-4"><p class="text-capitalize">discos traseros</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['discos-traseros'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['discos-traseros'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['discos-traseros'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['discos-traseros'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['discos-traseros'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['discos-traseros'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['discos-traseros-comentario'] %></div>
@@ -1548,9 +1548,9 @@
             <div class="col-4"><p class="text-capitalize">pastillas delanteras</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['pastillas-delanteras'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['pastillas-delanteras'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['pastillas-delanteras'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['pastillas-delanteras'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['pastillas-delanteras'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['pastillas-delanteras'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['pastillas-delanteras-comentario'] %></div>
@@ -1561,9 +1561,9 @@
             <div class="col-4"><p class="text-capitalize">pastillas traseras</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['pastillas-traseras'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['pastillas-traseras'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['pastillas-traseras'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['pastillas-traseras'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['pastillas-traseras'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['pastillas-traseras'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['pastillas-traseras-comentario'] %></div>
@@ -1574,9 +1574,9 @@
             <div class="col-4"><p class="text-capitalize">nivel liquido de freno</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['nivel-liquido-de-freno'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['nivel-liquido-de-freno'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['nivel-liquido-de-freno'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['nivel-liquido-de-freno'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['nivel-liquido-de-freno'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['nivel-liquido-de-freno'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['nivel-liquido-de-freno-comentario'] %></div>
@@ -1587,9 +1587,9 @@
             <div class="col-4"><p class="text-capitalize">perdidas de liquido de freno</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['perdidas-de-liquido-de-freno'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['perdidas-de-liquido-de-freno'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['perdidas-de-liquido-de-freno'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['perdidas-de-liquido-de-freno'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['perdidas-de-liquido-de-freno'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['perdidas-de-liquido-de-freno'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['perdidas-de-liquido-de-freno-comentario'] %></div>
@@ -1600,9 +1600,9 @@
             <div class="col-4"><p class="text-capitalize">estado freno de mano</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-freno-de-mano'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-freno-de-mano'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-freno-de-mano'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-freno-de-mano'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-freno-de-mano'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-freno-de-mano'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-freno-de-mano-comentario'] %></div>
@@ -1617,9 +1617,9 @@
             <div class="col-4"><p class="text-capitalize">funcionamiento dirección</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['funcionamiento-direccion'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['funcionamiento-direccion'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['funcionamiento-direccion'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['funcionamiento-direccion'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['funcionamiento-direccion'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['funcionamiento-direccion'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['funcionamiento-direccion-comentario'] %></div>
@@ -1630,9 +1630,9 @@
             <div class="col-4"><p class="text-capitalize">pérdidas de aceite</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['perdidas-de-aceite-direccion'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['perdidas-de-aceite-direccion'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['perdidas-de-aceite-direccion'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['perdidas-de-aceite-direccion'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['perdidas-de-aceite-direccion'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['perdidas-de-aceite-direccion'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['perdidas-de-aceite-direccion-comentario'] %></div>
@@ -1643,9 +1643,9 @@
             <div class="col-4"><p class="text-capitalize">vibraciones en la dirección</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['vibraciones-en-la-direccion'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['vibraciones-en-la-direccion'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['vibraciones-en-la-direccion'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['vibraciones-en-la-direccion'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['vibraciones-en-la-direccion'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['vibraciones-en-la-direccion'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['vibraciones-en-la-direccion-comentario'] %></div>
@@ -1660,9 +1660,9 @@
             <div class="col-4"><p class="text-capitalize">estado llanta delantera derecha</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-llanta-delantera-derecha'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-llanta-delantera-derecha'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-llanta-delantera-derecha'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-llanta-delantera-derecha'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-llanta-delantera-derecha'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-llanta-delantera-derecha'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-llanta-delantera-derecha-comentario'] %></div>
@@ -1673,9 +1673,9 @@
             <div class="col-4"><p class="text-capitalize">estado llanta delantera izquierda</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-llanta-delantera-izquierda'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-llanta-delantera-izquierda'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-llanta-delantera-izquierda'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-llanta-delantera-izquierda'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-llanta-delantera-izquierda'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-llanta-delantera-izquierda'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-llanta-delantera-izquierda-comentario'] %></div>
@@ -1686,9 +1686,9 @@
             <div class="col-4"><p class="text-capitalize">estado llanta trasera derecha</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-llanta-trasera-derecha'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-llanta-trasera-derecha'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-llanta-trasera-derecha'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-llanta-trasera-derecha'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-llanta-trasera-derecha'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-llanta-trasera-derecha'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-llanta-trasera-derecha-comentario'] %></div>
@@ -1699,9 +1699,9 @@
             <div class="col-4"><p class="text-capitalize">estado llanta trasera izquierda</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-llanta-trasera-izquierda'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-llanta-trasera-izquierda'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-llanta-trasera-izquierda'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-llanta-trasera-izquierda'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-llanta-trasera-izquierda'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-llanta-trasera-izquierda'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-llanta-trasera-izquierda-comentario'] %></div>
@@ -1712,9 +1712,9 @@
             <div class="col-4"><p class="text-capitalize">comprobación presiones neumáticos</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['comprobacion-presiones-neumaticos'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['comprobacion-presiones-neumaticos'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['comprobacion-presiones-neumaticos'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['comprobacion-presiones-neumaticos'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['comprobacion-presiones-neumaticos'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['comprobacion-presiones-neumaticos'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['comprobacion-presiones-neumaticos-comentario'] %></div>
@@ -1725,9 +1725,9 @@
             <div class="col-4"><p class="text-capitalize">neumáticos pinchados</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['neumaticos-pinchados'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['neumaticos-pinchados'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['neumaticos-pinchados'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['neumaticos-pinchados'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['neumaticos-pinchados'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['neumaticos-pinchados'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['neumaticos-pinchados-comentario'] %></div>
@@ -1738,9 +1738,9 @@
             <div class="col-4"><p class="text-capitalize">estado neumaticos traseros</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-neumaticos-traseros'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-neumaticos-traseros'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-neumaticos-traseros'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-neumaticos-traseros'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-neumaticos-traseros'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-neumaticos-traseros'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-neumaticos-traseros-comentario'] %></div>
@@ -1751,9 +1751,9 @@
             <div class="col-4"><p class="text-capitalize">estado neumaticos delanteros</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['estado-neumaticos-delanteros'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['estado-neumaticos-delanteros'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['estado-neumaticos-delanteros'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['estado-neumaticos-delanteros'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['estado-neumaticos-delanteros'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['estado-neumaticos-delanteros'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['estado-neumaticos-delanteros-comentario'] %></div>
@@ -1768,9 +1768,9 @@
             <div class="col-4"><p class="text-capitalize">luna delantera</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['luna-delantera'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['luna-delantera'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['luna-delantera'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['luna-delantera'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['luna-delantera'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['luna-delantera'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['luna-delantera-comentario'] %></div>
@@ -1781,9 +1781,9 @@
             <div class="col-4"><p class="text-capitalize">luna trasera</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['luna-trasera'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['luna-trasera'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['luna-trasera'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['luna-trasera'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['luna-trasera'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['luna-trasera'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['luna-trasera-comentario'] %></div>
@@ -1794,9 +1794,9 @@
             <div class="col-4"><p class="text-capitalize">vidrio delantero derecho</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['vidrio-delantero-derecho'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['vidrio-delantero-derecho'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['vidrio-delantero-derecho'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['vidrio-delantero-derecho'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['vidrio-delantero-derecho'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['vidrio-delantero-derecho'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['vidrio-delantero-derecho-comentario'] %></div>
@@ -1807,9 +1807,9 @@
             <div class="col-4"><p class="text-capitalize">vidrio delantero izq</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['vidrio-delantero-izq'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['vidrio-delantero-izq'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['vidrio-delantero-izq'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['vidrio-delantero-izq'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['vidrio-delantero-izq'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['vidrio-delantero-izq'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['vidrio-delantero-izq-comentario'] %></div>
@@ -1820,9 +1820,9 @@
             <div class="col-4"><p class="text-capitalize">vidrio trasero derecho</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['vidrio-trasero-derecho'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['vidrio-trasero-derecho'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['vidrio-trasero-derecho'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['vidrio-trasero-derecho'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['vidrio-trasero-derecho'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['vidrio-trasero-derecho'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['vidrio-trasero-derecho-comentario'] %></div>
@@ -1833,9 +1833,9 @@
             <div class="col-4"><p class="text-capitalize">vidrio trasero izq</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['vidrio-trasero-izq'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['vidrio-trasero-izq'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['vidrio-trasero-izq'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['vidrio-trasero-izq'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['vidrio-trasero-izq'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['vidrio-trasero-izq'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['vidrio-trasero-izq-comentario'] %></div>
@@ -1846,9 +1846,9 @@
             <div class="col-4"><p class="text-capitalize">vidrio custodia delantera derecha</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['vidrio-custodia-delantera-derecha'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['vidrio-custodia-delantera-derecha'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['vidrio-custodia-delantera-derecha'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['vidrio-custodia-delantera-derecha'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['vidrio-custodia-delantera-derecha'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['vidrio-custodia-delantera-derecha'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['vidrio-custodia-delantera-derecha-comentario'] %></div>
@@ -1859,9 +1859,9 @@
             <div class="col-4"><p class="text-capitalize">vidrio custodia delantero izq</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['vidrio-custodia-delantero-izq'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check amarillo <% if(data['vidrio-custodia-delantero-izq'] == 'amarillo'){ %>checked<% } %>""></div>
-                <div class="check rojo <% if(data['vidrio-custodia-delantero-izq'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['vidrio-custodia-delantero-izq'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check amarillo <% if(data['vidrio-custodia-delantero-izq'] == 'Amarillo'){ %>checked<% } %>""></div>
+                <div class="check rojo <% if(data['vidrio-custodia-delantero-izq'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['vidrio-custodia-delantero-izq-comentario'] %></div>
@@ -1876,8 +1876,8 @@
             <div class="col-4"><p class="text-capitalize">el v.h necesita pasar ITV?</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['pasar-itv'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check rojo <% if(data['pasar-itv'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['pasar-itv'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check rojo <% if(data['pasar-itv'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['pasar-itv-comentario'] %></div>
@@ -1888,8 +1888,8 @@
             <div class="col-4"><p class="text-capitalize">el v.h tiene la documentación original necesaria para la ITV? </p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['documentacion-original-itv'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check rojo <% if(data['documentacion-original-itv'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['documentacion-original-itv'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check rojo <% if(data['documentacion-original-itv'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['documentacion-original-itv-comentario'] %></div>
@@ -1900,8 +1900,8 @@
             <div class="col-4"><p class="text-capitalize">el v.h tiene los libros de mantenimiento e instrucciones? </p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['libro-de-mantenimiento-instrucciones'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check rojo <% if(data['libro-de-mantenimiento-instrucciones'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['libro-de-mantenimiento-instrucciones'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check rojo <% if(data['libro-de-mantenimiento-instrucciones'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['libro-de-mantenimiento-instrucciones-comentario'] %></div>
@@ -1912,8 +1912,8 @@
             <div class="col-4"><p class="text-capitalize">el v.h tiene permiso de circulación? </p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['permiso-de-circulacion'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check rojo <% if(data['permiso-de-circulacion'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['permiso-de-circulacion'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check rojo <% if(data['permiso-de-circulacion'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['permiso-de-circulacion-comentario'] %></div>
@@ -1924,8 +1924,8 @@
             <div class="col-4"><p class="text-capitalize">el v.h tiene ficha técnica?</p></div>
             <div class="col-4">
               <div class="d-flex w-100 justify-content-center">
-                <div class="check verde <% if(data['ficha-tecnica'] == 'verde'){ %>checked<% } %>"></div>
-                <div class="check rojo <% if(data['ficha-tecnica'] == 'rojo'){ %>checked<% } %>""></div>
+                <div class="check verde <% if(data['ficha-tecnica'] == 'Verde'){ %>checked<% } %>"></div>
+                <div class="check rojo <% if(data['ficha-tecnica'] == 'Rojo'){ %>checked<% } %>""></div>
               </div>
             </div>
             <div class="col-4"><%- data['ficha-tecnica-comentario'] %></div>

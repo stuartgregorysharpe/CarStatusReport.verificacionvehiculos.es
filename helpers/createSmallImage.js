@@ -2,10 +2,9 @@ const { ROOT_PATH } = require('../config')
 const path = require('node:path')
 const sharp = require('sharp')
 
-const createSmallImage = async (imagePath, filename) => {
+const createSmallImage = async (imagePath, outputPath) => {
   try {
-    const smallImagePath = path.join(ROOT_PATH, `/archivos/small-${filename}`)
-    await sharp(imagePath).resize({ height: 150 }).toFile(smallImagePath)
+    await sharp(imagePath).resize({ height: 150 }).toFile(outputPath)
   } catch (error) {
     throw error
   }

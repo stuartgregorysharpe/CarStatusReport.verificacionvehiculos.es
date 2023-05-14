@@ -1,3 +1,28 @@
+<% function value(field, originalValue) { %>
+<%   if (data === null) { %>
+<%     return `value="${originalValue}"` %>
+<%   } %>
+<%  %>
+<%   return `value="${data.fields[field]}"` %>
+<% } %>
+
+<% function ta(field, originalValue) { %>
+<%   if (data === null) { %>
+<%     return originalValue %>
+<%   } %>
+<%  %>
+<%   return data.fields[field] %>
+<% } %>
+
+<% function opt(field, arrOptions, defaultOption) { %>
+<%   let selectedOption = defaultOption %>
+<%   if(data !== null) { %>
+<%     selectedOption = data?.fields[field] %>
+<%   } %>
+<%   return arrOptions.map(option => (`<option ${option === '' ? 'class="empty-option"' : ''} value="${option}" ${selectedOption === option ? 'selected' : ''}>${option}</option>`)).join('') %>
+<% } %>
+  
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,19 +32,37 @@
     <%- include('../partials/navbar') %>
     <section class="forms py-4 py-lg-5">
       <div class="container-xl">
+
+        <% if(data?.editMode) { %>
+          <h1 class="text-center fs-2 fw-lighter">EDICIÓN DEl REPORTE</h1>
+          <p class="text-center fst-italic"><%- data.filename %>.pdf</p>
+        <% } %>
+
         <form
           id="form-principal"
-          action="/report"
-          method="post"
+          method="POST"
           class="row g-3"
           enctype="multipart/form-data"
+          <% if (data === null) { %>
+            action="/report"
+          <% } %>
+
+          <% if (data?.editMode) { %>
+            action="/report/edit?_method=PUT"
+          <% } %>
+
           >
+
+          <% if (data?.editMode) { %>
+            <input type="hidden" name="_id" value="<%- data.reportId %>">
+          <% } %>
+
           <div class="col-12">
             <h3>DATOS DEL CLIENTE</h3>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" />
+            <input type="text" class="form-control" id="nombre" name="nombre" <%- value('nombre', '') %>/>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="poblacion" class="form-label">Población</label>
@@ -28,6 +71,7 @@
               class="form-control"
               id="poblacion"
               name="poblacion"
+              <%- value('poblacion', '') %>
               />
           </div>
           <div class="col-md-6 col-lg-4">
@@ -37,15 +81,16 @@
               class="form-control"
               id="telefono"
               name="telefono"
+              <%- value('telefono', '') %>
               />
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="pais" class="form-label">País</label>
-            <input type="text" class="form-control" id="pais" name="pais" />
+            <input type="text" class="form-control" id="pais" name="pais" <%- value('pais', '') %> />
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="email" class="form-label">E-mail</label>
-            <input type="email" class="form-control" id="email" name="email" />
+            <input type="email" class="form-control" id="email" name="email" <%- value('email', '') %> />
           </div>
           <div class="col-12">
             <h3>DATOS DEL VEHÍCULO</h3>
@@ -57,15 +102,16 @@
               class="form-control"
               id="matricula"
               name="matricula"
+              <%- value('matricula', '') %>
               />
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="marca" class="form-label">Marca</label>
-            <input type="text" class="form-control" id="marca" name="marca" />
+            <input type="text" class="form-control" id="marca" name="marca" <%- value('marca', '') %> />
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="modelo" class="form-label">Modelo</label>
-            <input type="text" class="form-control" id="modelo" name="modelo" />
+            <input type="text" class="form-control" id="modelo" name="modelo" <%- value('modelo', '') %> />
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="anio-modelo" class="form-label">Año Modelo</label>
@@ -74,6 +120,7 @@
               class="form-control"
               id="anio-modelo"
               name="anio-modelo"
+              <%- value('anio-modelo', '') %>
               />
           </div>
           <div class="col-md-6 col-lg-4">
@@ -83,11 +130,12 @@
               class="form-control"
               id="bastidor"
               name="bastidor"
+              <%- value('bastidor', '') %>
               />
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="color" class="form-label">Color</label>
-            <input type="text" class="form-control" id="color" name="color" />
+            <input type="text" class="form-control" id="color" name="color" <%- value('color', '') %> />
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="mod-tec" class="form-label">Mod. Tec.</label>
@@ -96,6 +144,7 @@
               class="form-control"
               id="mod-tec"
               name="mod-tec"
+              <%- value('mod-tec', '') %>
               />
           </div>
           <div class="col-md-6 col-lg-4">
@@ -105,6 +154,7 @@
               class="form-control"
               id="c-motor"
               name="c-motor"
+              <%- value('c-motor', '') %>
               />
           </div>
           <div class="col-md-6 col-lg-4">
@@ -114,6 +164,7 @@
               class="form-control"
               id="fecha-1-mat"
               name="fecha-1-mat"
+              <%- value('fecha-1-mat', '') %>
               />
           </div>
           <div class="col-md-6 col-lg-4">
@@ -125,6 +176,7 @@
               class="form-control"
               id="fecha-fin-garantia"
               name="fecha-fin-garantia"
+              <%- value('fecha-fin-garantia', '') %>
               />
           </div>
           <div class="col-md-6 col-lg-4">
@@ -136,6 +188,7 @@
               class="form-control"
               id="inspeccion-tecnica"
               name="inspeccion-tecnica"
+              <%- value('inspeccion-tecnica', '') %>
               />
           </div>
           
@@ -143,7 +196,7 @@
             <h3>ACTUACIONES</h3>
           </div>
           <div class="col-12">
-            <textarea name="actuaciones" id="actuaciones" cols="30" rows="4" placeholder="Actuaciones..." class="form-control mt-1"></textarea>
+            <textarea name="actuaciones" id="actuaciones" cols="30" rows="4" placeholder="Actuaciones..." class="form-control mt-1"><%= ta('actuaciones', '') %></textarea>
           </div>
 
 
@@ -159,6 +212,7 @@
               class="form-control"
               id="km"
               name="km"
+              <%- value('km', '') %>
               />
           </div>
           <div class="col-md-6 col-lg-4">
@@ -168,7 +222,7 @@
             <input
               type="text"
               class="form-control"
-              value="/8"
+              <%- value('gasolina', '/8') %>
               id="gasolina"
               name="gasolina"
               />
@@ -180,7 +234,7 @@
             <input
               type="text"
               class="form-control"
-              value="/8"
+              <%- value('aceite', '/8') %>
               id="aceite"
               name="aceite"
               />
@@ -192,7 +246,7 @@
             <input
               type="text"
               class="form-control"
-              value="/8"
+              <%- value('refrigerante', '/8') %>
               id="refrigerante"
               name="refrigerante"
               />
@@ -210,6 +264,7 @@
               class="form-control mt-auto"
               id="neumatico-delantero-derecho-mm"
               name="neumatico-delantero-derecho-mm"
+              <%- value('neumatico-delantero-derecho-mm', '') %>
               />
             <label for="neumatico-delantero-derecho-color" class="form-label mt-1"
               >Color</label
@@ -219,9 +274,7 @@
               id="neumatico-delantero-derecho-color"
               name="neumatico-delantero-derecho-color"
               >
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('neumatico-delantero-derecho-color', ['Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
           </div>
           <div class="col-md-6 col-lg-3 d-flex flex-column">
@@ -233,6 +286,7 @@
               class="form-control mt-auto"
               id="neumatico-delantero-izquierdo-mm"
               name="neumatico-delantero-izquierdo-mm"
+              <%- value('neumatico-delantero-izquierdo-mm', '') %>
               />
             <label for="neumatico-delantero-izquierdo-color" class="form-label mt-1"
               >Color</label
@@ -242,9 +296,7 @@
               id="neumatico-delantero-izquierdo-color"
               name="neumatico-delantero-izquierdo-color"
               >
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('neumatico-delantero-izquierdo-color', ['Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
           </div>
 
@@ -257,6 +309,7 @@
               class="form-control mt-auto"
               id="neumatico-trasero-derecho-mm"
               name="neumatico-trasero-derecho-mm"
+              <%- value('neumatico-trasero-derecho-mm', '') %>
               />
             <label for="neumatico-trasero-derecho-color" class="form-label mt-1"
               >Color</label
@@ -266,9 +319,7 @@
               id="neumatico-trasero-derecho-color"
               name="neumatico-trasero-derecho-color"
               >
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('neumatico-trasero-derecho-color', ['Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
           </div>
           <div class="col-md-6 col-lg-3 d-flex flex-column">
@@ -280,6 +331,7 @@
               class="form-control mt-auto"
               id="neumatico-trasero-izquierdo-mm"
               name="neumatico-trasero-izquierdo-mm"
+              <%- value('neumatico-trasero-izquierdo-mm', '') %>
               />
             <label for="neumatico-trasero-izquierdo-color" class="form-label mt-1"
               >Color</label
@@ -289,9 +341,7 @@
               id="neumatico-trasero-izquierdo-color"
               name="neumatico-trasero-izquierdo-color"
               >
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('neumatico-trasero-izquierdo-color', ['Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
           </div>
 
@@ -304,13 +354,16 @@
               class="form-control mt-auto"
               id="neumatico-dimensiones"
               name="neumatico-dimensiones"
+              <%- value('neumatico-dimensiones', '') %>
               />
           </div>
           
+          <% if(!data?.editMode) { %>
           <div class="col-12">
             <h3>Daños (gráfico)</h3>
             <input type="hidden" name="danios-img" id="danios-img">
           </div>
+          
 
           <div class="col-12 pb-5" style="overflow-x: scroll;">
             <div class="p-4">
@@ -322,8 +375,9 @@
               <button class="btn btn-outline-danger add-shape mb-3 me-3" data-shape="circle">Añadir "Abolladura"</button>
             </div>
           </div>
+          <% } %>
 
-
+          <% if(!data?.editMode) { %>
           <div class="col-12">
             <h3>RECORRIDOS REALIZADOS</h3>
             <input type="hidden" value="0" name="recorridos[cantidad]" id="cantidad-recorridos" />
@@ -335,6 +389,8 @@
 
             <button class="btn btn-primary" type="text" id="anadir-recorrido">Añadir Recorrido</button>
           </div>    
+          <% } %>
+
 
           <div class="col-12">
             <h3>RESULTADO PRUEBA DINÁMICA</h3>
@@ -348,11 +404,9 @@
               id="comportamiento-del-cambio"
               name="comportamiento-del-cambio"
               >
-              <option class="empty-option" value></option>
-              <option value="Correcto" selected>Correcto</option>
-              <option value="Dureza/ruido/rascado">Dureza/ruido/rascado</option>
+              <%- opt('comportamiento-del-cambio', ['', 'Correcto', 'Dureza/ruido/rascado'], 'Correcto') %>
             </select>
-            <textarea name="comportamiento-del-cambio-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="comportamiento-del-cambio-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('comportamiento-del-cambio-comentario', '') %></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="estado-del-embrague" class="form-label"
@@ -363,11 +417,9 @@
               id="estado-del-embrague"
               name="estado-del-embrague"
               >
-              <option class="empty-option" value></option>
-              <option value="Correcto" selected>Correcto</option>
-              <option value="Patina/ruido">Patina/ruido</option>
+              <%- opt('estado-del-embrague', ['' ,'Correcto', 'Patina/ruido'], 'Correcto') %>
             </select>
-            <textarea name="estado-del-embrague-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="estado-del-embrague-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-del-embrague-comentario', '') %></textarea>
           </div>
           <div class="col-12">
             <h3>INTERIOR</h3>
@@ -376,24 +428,18 @@
             <label for="interior" class="form-label">interior</label
               >
             <select name="interior" id="interior" class="form-control">
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('interior', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="interior-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="interior-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('interior-comentario', '') %></textarea>
 
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="hora-y-fecha" class="form-label">hora y fecha</label
               >
             <select name="hora-y-fecha" id="hora-y-fecha" class="form-control">
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('hora-y-fecha', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="hora-y-fecha-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="hora-y-fecha-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('hora-y-fecha-comentario', '') %></textarea>
 
           </div>
           <div class="col-md-6 col-lg-4">
@@ -404,11 +450,8 @@
               id="luces-interior"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="luces-interior-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('luces-interior', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="luces-interior-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('luces-interior-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -420,11 +463,8 @@
               id="testigos-averia"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="testigos-averia-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('testigos-averia', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="testigos-averia-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('testigos-averia-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -435,11 +475,8 @@
               id="climatizacion"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="climatizacion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('climatizacion', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="climatizacion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('climatizacion-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -451,11 +488,8 @@
               id="estado-elevalunas-d-d"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-elevalunas-d-d-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-elevalunas-d-d', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-elevalunas-d-d-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-elevalunas-d-d-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -467,11 +501,8 @@
               id="estado-elevalunas-d-izq"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-elevalunas-d-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-elevalunas-d-izq', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-elevalunas-d-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-elevalunas-d-izq-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -483,11 +514,8 @@
               id="estado-elevalunas-t-d"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-elevalunas-t-d-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-elevalunas-t-d', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-elevalunas-t-d-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-elevalunas-t-d-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -499,23 +527,17 @@
               id="estado-elevalunas-trasero-izquierdo"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-elevalunas-trasero-izquierdo-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-elevalunas-trasero-izquierdo', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-elevalunas-trasero-izquierdo-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-elevalunas-trasero-izquierdo-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="radio" class="form-label">radio</label
               >
             <select name="radio" id="radio" class="form-control">
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('radio', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="radio-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="radio-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('radio-comentario', '') %></textarea>
 
           </div>
           <div class="col-md-6 col-lg-4">
@@ -527,11 +549,8 @@
               id="estado-cerraduras"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-cerraduras-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-cerraduras', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-cerraduras-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-cerraduras-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -543,23 +562,17 @@
               id="estado-cinturones-seguridad"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-cinturones-seguridad-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-cinturones-seguridad', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-cinturones-seguridad-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-cinturones-seguridad-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="guarnecidos" class="form-label">guarnecidos</label
               >
             <select name="guarnecidos" id="guarnecidos" class="form-control">
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('guarnecidos', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="guarnecidos-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="guarnecidos-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('guarnecidos-comentario', '') %></textarea>
 
           </div>
           <div class="col-md-6 col-lg-4">
@@ -571,23 +584,17 @@
               id="parasol-y-retrovisor-interior"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="parasol-y-retrovisor-interior-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('parasol-y-retrovisor-interior', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="parasol-y-retrovisor-interior-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('parasol-y-retrovisor-interior-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="botoneras" class="form-label">botoneras</label
               >
             <select name="botoneras" id="botoneras" class="form-control">
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('botoneras', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="botoneras-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="botoneras-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('botoneras-comentario', '') %></textarea>
 
           </div>
           <div class="col-md-6 col-lg-4">
@@ -599,35 +606,26 @@
               id="cenicero-central"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="cenicero-central-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('cenicero-central', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="cenicero-central-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('cenicero-central-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="encendedor" class="form-label">encendedor</label
               >
             <select name="encendedor" id="encendedor" class="form-control">
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('encendedor', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="encendedor-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="encendedor-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('encendedor-comentario', '') %></textarea>
 
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="velocimetro" class="form-label">velocímetro</label
               >
             <select name="velocimetro" id="velocimetro" class="form-control">
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('velocimetro', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="velocimetro-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="velocimetro-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('velocimetro-comentario', '') %></textarea>
 
           </div>
           <div class="col-md-6 col-lg-4">
@@ -639,11 +637,8 @@
               id="cuentarrevoluciones"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="cuentarrevoluciones-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('cuentarrevoluciones', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="cuentarrevoluciones-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('cuentarrevoluciones-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -655,11 +650,8 @@
               id="cierre-centralizado"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="cierre-centralizado-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('cierre-centralizado', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="cierre-centralizado-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('cierre-centralizado-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -671,11 +663,8 @@
               id="asientos-y-tapizados"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="asientos-y-tapizados-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('asientos-y-tapizados', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="asientos-y-tapizados-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('asientos-y-tapizados-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -687,34 +676,25 @@
               id="retrovisor-interior"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="retrovisor-interior-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('retrovisor-interior', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="retrovisor-interior-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('retrovisor-interior-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="claxon" class="form-label">claxon</label
               >
             <select name="claxon" id="claxon" class="form-control">
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('claxon', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="claxon-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="claxon-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('claxon-comentario', '') %></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="calefaccion" class="form-label">calefacción</label
               >
             <select name="calefaccion" id="calefaccion" class="form-control">
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('calefaccion', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="calefaccion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="calefaccion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('calefaccion-comentario', '') %></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="aire-acondicionado" class="form-label"
@@ -725,23 +705,17 @@
               id="aire-acondicionado"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="aire-acondicionado-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('aire-acondicionado', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="aire-acondicionado-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('aire-acondicionado-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="gps" class="form-label">gps</label
               >
             <select name="gps" id="gps" class="form-control">
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('gps', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="gps-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="gps-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('gps-comentario', '') %></textarea>
           </div>
           
           <div class="col-12">
@@ -756,11 +730,8 @@
               id="diagnosis-general"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="diagnosis-general-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('diagnosis-general', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="diagnosis-general-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('diagnosis-general-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-12">
@@ -775,11 +746,8 @@
               id="danios-carroceria"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="danios-carroceria-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('danios-carroceria', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="danios-carroceria-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('danios-carroceria-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -791,34 +759,25 @@
               id="luz-posicion-delantera"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="luz-posicion-delantera-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('luz-posicion-delantera', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="luz-posicion-delantera-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('luz-posicion-delantera-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="luz-corta" class="form-label">luz corta</label
               >
             <select name="luz-corta" id="luz-corta" class="form-control">
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('luz-corta', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="luz-corta-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="luz-corta-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('luz-corta-comentario', '') %></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="luz-larga" class="form-label">luz larga</label
               >
             <select name="luz-larga" id="luz-larga" class="form-control">
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('luz-larga', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="luz-larga-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="luz-larga-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('luz-larga-comentario', '') %></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="luz-intermitentes-delantera" class="form-label"
@@ -829,23 +788,17 @@
               id="luz-intermitentes-delantera"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="luz-intermitentes-delantera-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('luz-intermitentes-delantera', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="luz-intermitentes-delantera-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('luz-intermitentes-delantera-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="luz-nieblas" class="form-label">luz nieblas</label
               >
             <select name="luz-nieblas" id="luz-nieblas" class="form-control">
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('luz-nieblas', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="luz-nieblas-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="luz-nieblas-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('luz-nieblas-comentario', '') %></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="sistema-lavado-faros" class="form-label"
@@ -856,11 +809,8 @@
               id="sistema-lavado-faros"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="sistema-lavado-faros-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('sistema-lavado-faros', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="sistema-lavado-faros-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('sistema-lavado-faros-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -872,11 +822,8 @@
               id="limpiaparabrisas-delanteros"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="limpiaparabrisas-delanteros-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('limpiaparabrisas-delanteros', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="limpiaparabrisas-delanteros-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('limpiaparabrisas-delanteros-comentario', '') %></textarea>
             </select>
           </div>
           
@@ -892,23 +839,17 @@
               id="danios-exterior-trasero"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="danios-exterior-trasero-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('danios-exterior-trasero', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="danios-exterior-trasero-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('danios-exterior-trasero-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="luz-freno" class="form-label">luz freno</label
               >
             <select name="luz-freno" id="luz-freno" class="form-control">
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('luz-freno', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="luz-freno-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="luz-freno-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('luz-freno-comentario', '') %></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="luz-intermitentes-trasera" class="form-label"
@@ -919,11 +860,8 @@
               id="luz-intermitentes-trasera"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="luz-intermitentes-trasera-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('luz-intermitentes-trasera', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="luz-intermitentes-trasera-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('luz-intermitentes-trasera-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -935,11 +873,8 @@
               id="luz-posicion-trasera"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="luz-posicion-trasera-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('luz-posicion-trasera', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="luz-posicion-trasera-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('luz-posicion-trasera-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -951,11 +886,8 @@
               id="luz-marcha-atras"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="luz-marcha-atras-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('luz-marcha-atras', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="luz-marcha-atras-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('luz-marcha-atras-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -967,11 +899,8 @@
               id="luz-niebla-trasero"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="luz-niebla-trasero-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('luz-niebla-trasero', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="luz-niebla-trasero-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('luz-niebla-trasero-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -983,11 +912,8 @@
               id="limpias-parabrisas-trasero"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="limpias-parabrisas-trasero-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('limpias-parabrisas-trasero', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="limpias-parabrisas-trasero-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('limpias-parabrisas-trasero-comentario', '') %></textarea>
             </select>
           </div>
           
@@ -1003,11 +929,8 @@
               id="estado-carroceria-derecho"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-carroceria-derecho-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-carroceria-derecho', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-carroceria-derecho-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-carroceria-derecho-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1019,11 +942,8 @@
               id="retrovisor-derecho"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="retrovisor-derecho-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('retrovisor-derecho', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="retrovisor-derecho-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('retrovisor-derecho-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1035,11 +955,8 @@
               id="intermitentes-derechos"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="intermitentes-derechos-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('intermitentes-derechos', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="intermitentes-derechos-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('intermitentes-derechos-comentario', '') %></textarea>
             </select>
           </div>
           
@@ -1055,11 +972,8 @@
               id="estado-carroceria-izquierdo"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-carroceria-izquierdo-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-carroceria-izquierdo', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-carroceria-izquierdo-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-carroceria-izquierdo-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1070,11 +984,8 @@
               id="retrovisor-izq"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="retrovisor-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('retrovisor-izq', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="retrovisor-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('retrovisor-izq-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1086,11 +997,8 @@
               id="intermitente-izq"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="intermitente-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('intermitente-izq', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="intermitente-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('intermitente-izq-comentario', '') %></textarea>
             </select>
           </div>
           
@@ -1105,11 +1013,8 @@
               id="estado-visual"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-visual-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-visual', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-visual-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-visual-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1121,11 +1026,8 @@
               id="nivel-liquido-limpiaparabrisas"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="nivel-liquido-limpiaparabrisas-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('nivel-liquido-limpiaparabrisas', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="nivel-liquido-limpiaparabrisas-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('nivel-liquido-limpiaparabrisas-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1137,11 +1039,8 @@
               id="estado-plasticos-protectores"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-plasticos-protectores-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-plasticos-protectores', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-plasticos-protectores-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-plasticos-protectores-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1153,11 +1052,8 @@
               id="nivel-liquido-anticongelante"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="nivel-liquido-anticongelante-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('nivel-liquido-anticongelante', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="nivel-liquido-anticongelante-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('nivel-liquido-anticongelante-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1169,11 +1065,8 @@
               id="estado-soportes-de-motor"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-soportes-de-motor-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-soportes-de-motor', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-soportes-de-motor-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-soportes-de-motor-comentario', '') %></textarea>
             </select>
           </div>
           
@@ -1184,12 +1077,9 @@
             <label for="nivel-aceite" class="form-label">nivel aceite</label
               >
             <select name="nivel-aceite" id="nivel-aceite" class="form-control">
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('nivel-aceite', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="nivel-aceite-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="nivel-aceite-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('nivel-aceite-comentario', '') %></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="sistemas-electricos" class="form-label"
@@ -1200,11 +1090,8 @@
               id="sistemas-electricos"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="sistemas-electricos-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('sistemas-electricos', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="sistemas-electricos-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('sistemas-electricos-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1216,11 +1103,8 @@
               id="sistema-correa-auxiliar"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="sistema-correa-auxiliar-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('sistema-correa-auxiliar', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="sistema-correa-auxiliar-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('sistema-correa-auxiliar-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1232,11 +1116,8 @@
               id="sistema-de-distribucion"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="sistema-de-distribucion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('sistema-de-distribucion', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="sistema-de-distribucion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('sistema-de-distribucion-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1247,11 +1128,8 @@
               id="sistema-escape"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="sistema-escape-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('sistema-escape', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="sistema-escape-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('sistema-escape-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1263,11 +1141,8 @@
               id="perdidas-de-aceite-motor"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="perdidas-de-aceite-motor-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('perdidas-de-aceite-motor', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="perdidas-de-aceite-motor-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('perdidas-de-aceite-motor-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1279,11 +1154,8 @@
               id="perdidas-refrigerante"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="perdidas-refrigerante-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('perdidas-refrigerante', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="perdidas-refrigerante-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('perdidas-refrigerante-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1295,11 +1167,8 @@
               id="perdidas-combustible"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="perdidas-combustible-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('perdidas-combustible', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="perdidas-combustible-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('perdidas-combustible-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1311,11 +1180,8 @@
               id="perdidas-adblue"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="perdidas-adblue-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('perdidas-adblue', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="perdidas-adblue-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('perdidas-adblue-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1327,11 +1193,8 @@
               id="ralenti-correcto"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="ralenti-correcto-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('ralenti-correcto', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="ralenti-correcto-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('ralenti-correcto-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1343,34 +1206,25 @@
               id="ruidos-de-motor"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="ruidos-de-motor-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('ruidos-de-motor', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="ruidos-de-motor-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('ruidos-de-motor-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="vibraciones" class="form-label">vibraciones</label
               >
             <select name="vibraciones" id="vibraciones" class="form-control">
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('vibraciones', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="vibraciones-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="vibraciones-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('vibraciones-comentario', '') %></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="humos" class="form-label">humos</label
               >
             <select name="humos" id="humos" class="form-control">
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('humos', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="humos-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="humos-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('humos-comentario', '') %></textarea>
           </div>
           
           <div class="col-12">
@@ -1385,11 +1239,8 @@
               id="temperatura-del-motor"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="temperatura-del-motor-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('temperatura-del-motor', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="temperatura-del-motor-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('temperatura-del-motor-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1401,11 +1252,8 @@
               id="nivel-y-estado-refrigerante"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="nivel-y-estado-refrigerante-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('nivel-y-estado-refrigerante', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="nivel-y-estado-refrigerante-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('nivel-y-estado-refrigerante-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1417,11 +1265,8 @@
               id="estado-de-radiadores"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-de-radiadores-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-de-radiadores', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-de-radiadores-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-de-radiadores-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1433,11 +1278,8 @@
               id="estado-electroventiladores"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-electroventiladores-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-electroventiladores', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-electroventiladores-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-electroventiladores-comentario', '') %></textarea>
             </select>
           </div>
           
@@ -1455,11 +1297,8 @@
               id="funcionamiento-embrague-sistema-hidraulico"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="funcionamiento-embrague-sistema-hidraulico-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('funcionamiento-embrague-sistema-hidraulico', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="funcionamiento-embrague-sistema-hidraulico-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('funcionamiento-embrague-sistema-hidraulico-comentario', '') %></textarea>
             </select>
           </div>
           
@@ -1475,11 +1314,8 @@
               id="funcionamiento-sistema-manual"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="funcionamiento-sistema-manual-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('funcionamiento-sistema-manual', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="funcionamiento-sistema-manual-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('funcionamiento-sistema-manual-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1491,11 +1327,8 @@
               id="funcionamiento-sistema-automatico"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="funcionamiento-sistema-automatico-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('funcionamiento-sistema-automatico', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="funcionamiento-sistema-automatico-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('funcionamiento-sistema-automatico-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1507,11 +1340,8 @@
               id="sistema-palanquearia"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="sistema-palanquearia-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('sistema-palanquearia', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="sistema-palanquearia-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('sistema-palanquearia-comentario', '') %></textarea>
             </select>
           </div>
           
@@ -1527,11 +1357,8 @@
               id="estado-amortiguador-d-derecho"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-amortiguador-d-derecho-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-amortiguador-d-derecho', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-amortiguador-d-derecho-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-amortiguador-d-derecho-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1543,11 +1370,8 @@
               id="estado-amortiguador-d-izq"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-amortiguador-d-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-amortiguador-d-izq', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-amortiguador-d-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-amortiguador-d-izq-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1559,11 +1383,8 @@
               id="estado-amortiguador-tra-derecho"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-amortiguador-tra-derecho-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-amortiguador-tra-derecho', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-amortiguador-tra-derecho-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-amortiguador-tra-derecho-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1575,11 +1396,8 @@
               id="estado-amortiguador-tra-izq"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-amortiguador-tra-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-amortiguador-tra-izq', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-amortiguador-tra-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-amortiguador-tra-izq-comentario', '') %></textarea>
             </select>
           </div>
           
@@ -1595,11 +1413,8 @@
               id="discos-delanteros"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="discos-delanteros-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('discos-delanteros', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="discos-delanteros-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('discos-delanteros-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1611,11 +1426,8 @@
               id="discos-traseros"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="discos-traseros-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('discos-traseros', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="discos-traseros-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('discos-traseros-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1627,11 +1439,8 @@
               id="pastillas-delanteras"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="pastillas-delanteras-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('pastillas-delanteras', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="pastillas-delanteras-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('pastillas-delanteras-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1643,11 +1452,8 @@
               id="pastillas-traseras"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="pastillas-traseras-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('pastillas-traseras', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="pastillas-traseras-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('pastillas-traseras-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1659,11 +1465,8 @@
               id="nivel-liquido-de-freno"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="nivel-liquido-de-freno-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('nivel-liquido-de-freno', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="nivel-liquido-de-freno-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('nivel-liquido-de-freno-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1675,11 +1478,8 @@
               id="perdidas-de-liquido-de-freno"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="perdidas-de-liquido-de-freno-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('perdidas-de-liquido-de-freno', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="perdidas-de-liquido-de-freno-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('perdidas-de-liquido-de-freno-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1691,11 +1491,8 @@
               id="estado-freno-de-mano"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-freno-de-mano-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-freno-de-mano', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-freno-de-mano-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-freno-de-mano-comentario', '') %></textarea>
             </select>
           </div>
           
@@ -1711,11 +1508,8 @@
               id="funcionamiento-direccion"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="funcionamiento-direccion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('funcionamiento-direccion', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="funcionamiento-direccion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('funcionamiento-direccion-comentari', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1727,11 +1521,8 @@
               id="perdidas-de-aceite-direccion"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="perdidas-de-aceite-direccion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('perdidas-de-aceite-direccion', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="perdidas-de-aceite-direccion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('perdidas-de-aceite-direccion-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1743,11 +1534,8 @@
               id="vibraciones-en-la-direccion"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="vibraciones-en-la-direccion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('vibraciones-en-la-direccion', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="vibraciones-en-la-direccion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('vibraciones-en-la-direccion-comentario', '') %></textarea>
             </select>
           </div>
           
@@ -1763,11 +1551,8 @@
               id="estado-llanta-delantera-derecha"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-llanta-delantera-derecha-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-llanta-delantera-derecha', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-llanta-delantera-derecha-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-llanta-delantera-derecha-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1779,11 +1564,8 @@
               id="estado-llanta-delantera-izquierda"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-llanta-delantera-izquierda-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-llanta-delantera-izquierda', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-llanta-delantera-izquierda-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-llanta-delantera-izquierda-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1795,11 +1577,8 @@
               id="estado-llanta-trasera-derecha"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-llanta-trasera-derecha-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-llanta-trasera-derecha', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-llanta-trasera-derecha-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-llanta-trasera-derecha-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1811,11 +1590,8 @@
               id="estado-llanta-trasera-izquierda"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-llanta-trasera-izquierda-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-llanta-trasera-izquierda', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-llanta-trasera-izquierda-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-llanta-trasera-izquierda-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1827,11 +1603,8 @@
               id="comprobacion-presiones-neumaticos"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="comprobacion-presiones-neumaticos-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('comprobacion-presiones-neumaticos', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="comprobacion-presiones-neumaticos-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('comprobacion-presiones-neumaticos-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1843,11 +1616,8 @@
               id="neumaticos-pinchados"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="neumaticos-pinchados-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('neumaticos-pinchados', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="neumaticos-pinchados-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('neumaticos-pinchados-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1859,11 +1629,8 @@
               id="estado-neumaticos-traseros"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-neumaticos-traseros-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-neumaticos-traseros', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-neumaticos-traseros-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-neumaticos-traseros-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1875,11 +1642,8 @@
               id="estado-neumaticos-delanteros"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="estado-neumaticos-delanteros-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('estado-neumaticos-delanteros', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="estado-neumaticos-delanteros-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('estado-neumaticos-delanteros-comentario', '') %></textarea>
             </select>
           </div>
           
@@ -1894,23 +1658,17 @@
               id="luna-delantera"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="luna-delantera-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('luna-delantera', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="luna-delantera-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('luna-delantera-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="luna-trasera" class="form-label">luna trasera</label
               >
             <select name="luna-trasera" id="luna-trasera" class="form-control">
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('luna-trasera', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="luna-trasera-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="luna-trasera-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('luna-trasera-comentario', '') %></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="vidrio-delantero-derecho" class="form-label"
@@ -1921,11 +1679,8 @@
               id="vidrio-delantero-derecho"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="vidrio-delantero-derecho-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('vidrio-delantero-derecho', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="vidrio-delantero-derecho-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('vidrio-delantero-derecho-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1937,11 +1692,8 @@
               id="vidrio-delantero-izq"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="vidrio-delantero-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('vidrio-delantero-izq', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="vidrio-delantero-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('vidrio-delantero-izq-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1953,11 +1705,8 @@
               id="vidrio-trasero-derecho"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="vidrio-trasero-derecho-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('vidrio-trasero-derecho', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="vidrio-trasero-derecho-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('vidrio-trasero-derecho-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1969,11 +1718,8 @@
               id="vidrio-trasero-izq"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="vidrio-trasero-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('vidrio-trasero-izq', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="vidrio-trasero-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('vidrio-trasero-izq-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -1985,11 +1731,8 @@
               id="vidrio-custodia-delantera-derecha"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="vidrio-custodia-delantera-derecha-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('vidrio-custodia-delantera-derecha', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="vidrio-custodia-delantera-derecha-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('vidrio-custodia-delantera-derecha-comentario', '') %></textarea>
             </select>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -2001,11 +1744,8 @@
               id="vidrio-custodia-delantero-izq"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="amarillo">Amarillo</option>
-              <option value="rojo">Rojo</option>
-              <textarea name="vidrio-custodia-delantero-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+              <%- opt('vidrio-custodia-delantero-izq', ['', 'Verde', 'Amarillo', 'Rojo'], 'Verde') %>
+              <textarea name="vidrio-custodia-delantero-izq-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('vidrio-custodia-delantero-izq-comentario', '') %></textarea>
             </select>
           </div>
           
@@ -2017,11 +1757,9 @@
               >el v.h necesita pasar ITV?</label
               >
             <select name="pasar-itv" id="pasar-itv" class="form-control">
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('pasar-itv', ['', 'Verde', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="pasar-itv-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="pasar-itv-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('pasar-itv-comentario', '') %></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="documentacion-original-itv" class="form-label"
@@ -2032,11 +1770,9 @@
               id="documentacion-original-itv"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('documentacion-original-itv', ['', 'Verde', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="documentacion-original-itv-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="documentacion-original-itv-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('documentacion-original-itv-comentario', '') %></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="libro-de-mantenimiento-instrucciones" class="form-label"
@@ -2047,11 +1783,9 @@
               id="libro-de-mantenimiento-instrucciones"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('libro-de-mantenimiento-instrucciones', ['', 'Verde', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="libro-de-mantenimiento-instrucciones-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="libro-de-mantenimiento-instrucciones-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('libro-de-mantenimiento-instrucciones-comentario', '') %></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="permiso-de-circulacion" class="form-label"
@@ -2062,11 +1796,9 @@
               id="permiso-de-circulacion"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('permiso-de-circulacion', ['', 'Verde', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="permiso-de-circulacion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="permiso-de-circulacion-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('permiso-de-circulacion-comentario', '') %></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="ficha-tecnica" class="form-label"
@@ -2077,18 +1809,16 @@
               id="ficha-tecnica"
               class="form-control"
               >
-              <option class="empty-option" value></option>
-              <option value="verde" selected>Verde</option>
-              <option value="rojo">Rojo</option>
+              <%- opt('ficha-tecnica', ['', 'Verde', 'Rojo'], 'Verde') %>
             </select>
-            <textarea name="ficha-tecnica-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"></textarea>
+            <textarea name="ficha-tecnica-comentario" id="" cols="30" rows="4" placeholder="Comentario" class="form-control mt-1"><%- ta('ficha-tecnica-comentario', '') %></textarea>
           </div>
           <div class="col-12">
             <h3>Datos del Perito</h3>
           </div>
           <div class="col-12">
             <label for="valoracion-perito" class="form-label">Valoración Personal</label>
-            <textarea name="valoracion-perito" id="valoracion-perito" cols="30" rows="4" class="form-control mt-1"></textarea>
+            <textarea name="valoracion-perito" id="valoracion-perito" cols="30" rows="4" class="form-control mt-1"><%- ta('valoracion-perito', '') %></textarea>
           </div>
           <div class="col-md-6 col-lg-4">
             <label for="nombre-perito" class="form-label">Nombre</label>
@@ -2097,6 +1827,7 @@
               class="form-control"
               id="nombre-perito"
               name="nombre-perito"
+              <%- value('nombre-perito', '') %>
               />
           </div>
           <div class="col-md-6 col-lg-4">
@@ -2106,6 +1837,7 @@
               class="form-control"
               id="lugar-perito"
               name="lugar-perito"
+              <%- value('lugar-perito', '') %>
               />
           </div>
           <div class="col-md-6 col-lg-4">
@@ -2115,9 +1847,11 @@
               class="form-control"
               id="fecha-perito"
               name="fecha-perito"
+              <%- value('fecha-perito', '') %>
               />
           </div>
           
+          <% if(!data?.editMode) { %>
           <div class="col-12">
             <label for="firma" class="form-label">Firma</label>
             <input type="hidden" id="firma-input" name="firma" />
@@ -2129,6 +1863,9 @@
             </button>
             <div id="firma-contenedor-invisible"></div>
           </div>
+          <% } %>
+          
+          <% if(!data?.editMode) { %>
           <div class="col-12">
             <h3>Archivos</h3>
           </div>
@@ -2141,6 +1878,8 @@
               multiple
               />
           </div>
+          <% } %>
+          <% if(!data?.editMode) { %>
           <div
             class="col-12 pt-5 pb-4 pb-md-5 mt-md-5 d-flex justify-content-center"
             >
@@ -2149,12 +1888,24 @@
             Generar PDF
             </button>
           </div>
+          <% } %>
+
+          <% if(data?.editMode) { %>
+          <div
+            class="col-12 pt-5 pb-4 pb-md-5 mt-md-5 d-flex justify-content-center"
+            >
+            <button type="submit" class="btn btn-primary btn-lg">
+            Editar PDF
+            </button>
+          </div>
+          <% } %>
+
         </form>
       </div>
     </section>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/signature_pad.umd.min.js"></script>
-    <script src="js/fabric.min.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/signature_pad.umd.min.js"></script>
+    <script src="/js/fabric.min.js"></script>
+    <script src="/js/custom.js"></script>
   </body>
 </html>

@@ -1,0 +1,76 @@
+<% const reports = {} %>
+<% for ( const report of data.results ) { %>
+<%   const username = report.author.username %>
+<%   if ( !reports[username] ) { %>
+<%     reports[username] = [] %>
+<%   } %>
+<%   reports[username].push(report) %>
+<% } %>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+    <section class="report-list py-5"> 
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <h2>Reportes</h2>
+            <hr>
+            <% let i = 0 %>
+            <% let j = 0 %>
+            <% for (const username in reports) { %>
+              <h4 class="pt-3"><%= username %></h4>
+              <div class="reports">
+                <% for ( const report of reports[username]) { %>
+                  <div class="report mb-3">
+                    <div class="row">
+                      <div class="col-md-6 d-flex align-items-center">
+                        <span class="report-date ms-0"><%= report.date.toLocaleDateString('en-GB') %></span><a href="/reportes/<%= report._id %>/<%= report.filename %>.pdf" target="_blank"><%= report.filename %></a>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-lg-end">
+                        <form method="POST" action="report/edit">
+                          <input type="hidden" name="_id" value="<%= report._id %>">
+                          <button type="submit" class="btn btn-sm btn-primary me-2">Editar</button>
+                        </form>
+                        <button type="button" class="btn btn-sm btn-warning me-2" data-bs-toggle="collapse" data-bs-target="#renombrar-<%= i %>-<%= j %>" aria-expanded="true" aria-controls="renombrar-<%= i %>-<%= j %>">Renombrar</button>
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="collapse" data-bs-target="#eliminar-<%= i %>-<%= j %>" aria-expanded="true" aria-controls="eliminar-<%= i %>-<%= j %>">Eliminar</button>
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <div class="accordion-collapse collapse" aria-labelledby="renombrar-<%= i %>-<%= j %>" data-bs-parent="#accordion-<%= i %>" id="renombrar-<%= i %>-<%= j %>">
+                        <form method="POST" class="py-3" action="report/rename?_method=PUT">
+                          <input type="hidden" name="_id" value="<%= report._id %>">
+                          <input type="text" class="form-control mb-3" id="filename" value="<%= report.filename %>" name="filename" required>
+                          <button type="submit" class="btn btn-warning">Renombrar</button>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="accordion-collapse collapse" aria-labelledby="eliminar-<%= i %>-<%= j %>" data-bs-parent="#accordion-<%= i %>" id="eliminar-<%= i %>-<%= j %>">
+                        <form method="POST" class="py-3" action="report/?_method=DELETE">
+                          <input type="hidden" name="_id" value="<%= report._id %>">
+                          <p><strong>Seguro que desea eliminar el reporte <em><%= report.filename %></em>?</strong></p>
+                          <button type="submit" class="btn btn-danger">ELIMINAR REPORTE</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <% j++ %>
+                <% } %>
+              </div>
+              <% i++ %>
+            <% } %>
+
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

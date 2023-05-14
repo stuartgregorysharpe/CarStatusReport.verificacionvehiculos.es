@@ -6,6 +6,7 @@ const mainRouter = require('./main')
 const pdfsRouter = require('./pdfs')
 const reportRouter = require('./report')
 const usersRouter = require('./users')
+const reportListRouter = require('./reportList')
 
 module.exports = {
   adminRouter,
@@ -15,5 +16,6 @@ module.exports = {
   mainRouter,
   pdfsRouter,
   reportRouter,
-  usersRouter
+  usersRouter,
+  reportListRouter
 }
