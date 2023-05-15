@@ -14,7 +14,7 @@ const reportListGet = async (req, res, next) => {
 
     const results = await Reports.find(findParams, '_id filename author date').exec()
   
-    res.render('pages/reportList', { data: { results,  } })
+    res.render('pages/reportList', { data: { results, isAdmin } })
   } catch (error) {
     next(error)
   }

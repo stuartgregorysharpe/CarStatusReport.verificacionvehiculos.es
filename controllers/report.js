@@ -119,12 +119,12 @@ const reportPostEdit = async (req, res, next) => {
 }
 
 const reportPutEdit = async (req, res, next) => {
-  const { isAdmin, _id: userId } = await jwt.decode(req.cookies.jwt, SALT)
+  const { isAdmin } = await jwt.decode(req.cookies.jwt, SALT)
   const reportId = req.body._id
   const report = await Reports.findById(reportId, "data filename author._id")
 
   
-  if (isAdmin || report.author._id.toString() === userId) {
+  if (isAdmin) {
     const mergedData = Object.assign(JSON.parse(report.data), req.body)
 
     const baseURL = req.protocol + "://" + req.get("host")
